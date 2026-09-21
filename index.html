@@ -1992,14 +1992,87 @@
             Обсудим формат съёмки, дату и детали.
           </p>
 
-          <a
-            href="https://t.me/"
-            target="_blank"
-            rel="noopener noreferrer"
-            class="button button-light"
-          >
-            Написать в Telegram
-          </a>
+          <form class="contact-form" id="contactForm">
+
+  <div class="contact-form-field">
+    <label for="contactName">Имя</label>
+    <input
+      type="text"
+      id="contactName"
+      name="name"
+      placeholder="Ваше имя"
+      required
+    />
+  </div>
+
+  <div class="contact-form-field">
+    <label for="contactType">Что снимаем?</label>
+    <input
+      type="text"
+      id="contactType"
+      name="type"
+      placeholder="Например, свадьбу или портрет"
+    />
+  </div>
+
+  <div class="contact-form-field">
+    <label for="contactDate">Дата съёмки</label>
+    <input
+      type="text"
+      id="contactDate"
+      name="date"
+      placeholder="Например, 15 июня"
+    />
+  </div>
+
+  <div class="contact-form-field">
+    <label for="contactMessage">О съёмке</label>
+    <textarea
+      id="contactMessage"
+      name="message"
+      rows="4"
+      placeholder="Расскажите немного о съёмке"
+      required
+    ></textarea>
+  </div>
+
+  <button
+    type="submit"
+    class="button button-light"
+  >
+    Отправить заявку
+  </button>
+
+</form>
+
+<div class="contact-direct">
+
+  <div class="contact-direct-label">
+    Или написать напрямую
+  </div>
+
+  <div class="contact-direct-buttons">
+
+    <a href="#" class="button">
+      Авито
+    </a>
+
+    <a href="#" class="button">
+      VK
+    </a>
+
+    <a
+      href="https://t.me/"
+      target="_blank"
+      rel="noopener noreferrer"
+      class="button"
+    >
+      Telegram
+    </a>
+
+  </div>
+
+</div>
 
         </div>
 
