@@ -835,7 +835,10 @@
     }
 
     .footer-title {
-  margin-top: 35px;
+  position: absolute;
+  left: 3.5%;
+  bottom: 62px;
+
   max-width: 720px;
 
   font-family: "Outfit", sans-serif;
@@ -871,7 +874,12 @@
   position: absolute;
   z-index: 3;
   top: 50%;
-  right: clamp(5%, 7vw, 100px);
+
+  right: max(
+    24px,
+    calc(50% - min(34vw, 450px) - 220px)
+  );
+
   transform: translateY(-50%);
 
   display: flex;
