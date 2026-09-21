@@ -11,18 +11,28 @@
 <title>Елена — Фотограф</title>
 
 <style>
+
 :root {
-  --paper: #F3F0EB;
-  --paper-light: #F8F6F2;
-  --ink: #252321;
-  --ink-soft: #6A625B;
-  --warm: #9A7461;
-  --warm-deep: #795848;
-  --warm-light: #D8C8BC;
-  --white: #FFFCF8;
-  --line: rgba(37,35,33,.14);
-  --dark: #302C29;
+  --bg: #171717;
+  --bg-soft: #1d1d1c;
+  --bg-light: #242423;
+
+  --text: #eeeae4;
+  --text-soft: #aaa7a1;
+  --text-muted: #77756f;
+
+  --white: #f7f4ef;
+
+  --line: rgba(238,234,228,.14);
+  --line-soft: rgba(238,234,228,.08);
+
+  --accent: #b8afa5;
+  --dark: #111110;
 }
+
+/* =========================
+   RESET
+========================= */
 
 * {
   margin:0;
@@ -36,22 +46,25 @@ html {
 
 body {
   font-family:'Outfit',sans-serif;
-  background:var(--paper);
-  color:var(--ink);
+  background:var(--bg);
+  color:var(--text);
   font-weight:300;
   line-height:1.55;
   overflow-x:hidden;
 }
 
-h1,h2,h3,h4 {
+h1,
+h2,
+h3,
+h4 {
   font-family:'Cormorant Garamond',serif;
   font-weight:500;
-  line-height:1.08;
+  line-height:1.04;
 }
 
 a {
-  text-decoration:none;
   color:inherit;
+  text-decoration:none;
 }
 
 button,
@@ -98,44 +111,47 @@ select {
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  padding:.8rem 1.6rem;
-  font-size:.72rem;
-  letter-spacing:.1em;
+  padding:.82rem 1.55rem;
+
+  font-size:.68rem;
+  letter-spacing:.12em;
   text-transform:uppercase;
-  border:1px solid var(--ink);
+
+  border:1px solid var(--line);
   background:transparent;
+  color:var(--text);
+
   cursor:pointer;
-  transition:all .35s ease;
+
+  transition:
+    background .35s ease,
+    border-color .35s ease,
+    color .35s ease,
+    transform .35s ease;
+}
+
+.btn:hover {
+  transform:translateY(-2px);
 }
 
 .btn-solid {
-  background:var(--ink);
-  color:var(--white);
-  border-color:var(--ink);
+  background:var(--text);
+  border-color:var(--text);
+  color:var(--dark);
 }
 
 .btn-solid:hover {
-  background:var(--warm-deep);
-  border-color:var(--warm-deep);
-}
-
-.btn-outline {
-  color:var(--ink);
-  border-color:var(--ink);
-}
-
-.btn-outline:hover {
-  background:var(--ink);
-  color:var(--white);
+  background:var(--white);
+  border-color:var(--white);
 }
 
 .btn-light {
   color:var(--white);
-  border-color:rgba(255,252,248,.5);
+  border-color:rgba(247,244,239,.45);
 }
 
 .btn-light:hover {
-  background:rgba(255,252,248,.12);
+  background:rgba(247,244,239,.1);
   border-color:var(--white);
 }
 
@@ -148,19 +164,28 @@ nav {
   top:0;
   left:0;
   width:100%;
+
   z-index:300;
+
   padding:1.3rem 5%;
+
   display:flex;
   justify-content:space-between;
   align-items:center;
-  transition:all .45s ease;
+
+  transition:
+    background .45s ease,
+    padding .45s ease,
+    backdrop-filter .45s ease;
 }
 
 nav.scrolled {
-  background:rgba(243,240,235,.94);
-  backdrop-filter:blur(14px);
+  background:rgba(23,23,23,.88);
+  backdrop-filter:blur(16px);
+
   padding:.95rem 5%;
-  box-shadow:0 1px 24px rgba(37,35,33,.05);
+
+  border-bottom:1px solid var(--line-soft);
 }
 
 .logo {
@@ -169,11 +194,6 @@ nav.scrolled {
   font-weight:600;
   letter-spacing:.26em;
   color:var(--white);
-  transition:color .35s;
-}
-
-nav.scrolled .logo {
-  color:var(--ink);
 }
 
 .nav-links {
@@ -183,35 +203,26 @@ nav.scrolled .logo {
 }
 
 .nav-links a {
-  font-size:.72rem;
+  font-size:.68rem;
   letter-spacing:.12em;
   text-transform:uppercase;
-  color:rgba(255,252,248,.82);
-  transition:color .3s;
-}
+  color:rgba(247,244,239,.7);
 
-nav.scrolled .nav-links a {
-  color:var(--ink-soft);
+  transition:color .3s ease;
 }
 
 .nav-links a:hover {
-  color:var(--warm-light);
+  color:var(--white);
 }
 
 .nav-cta .btn {
   color:var(--white);
-  border-color:rgba(255,252,248,.45);
-}
-
-nav.scrolled .nav-cta .btn {
-  color:var(--ink);
-  border-color:var(--ink);
+  border-color:rgba(247,244,239,.4);
 }
 
 .nav-cta .btn:hover {
-  background:var(--warm);
-  border-color:var(--warm);
-  color:var(--white);
+  background:rgba(247,244,239,.1);
+  border-color:var(--white);
 }
 
 /* =========================
@@ -221,759 +232,596 @@ nav.scrolled .nav-cta .btn {
 .hero {
   height:100vh;
   min-height:720px;
+
   position:relative;
+
   display:flex;
   align-items:center;
   justify-content:center;
+
   text-align:center;
+
   overflow:hidden;
-  background:var(--paper);
+
+  background:var(--bg);
 }
 
 .hero-inner {
   position:absolute;
+
   inset:18px 3.5% 18px;
+
   border-radius:16px;
+
   overflow:hidden;
-  animation:heroFrameIn 1.4s cubic-bezier(.16,1,.3,1) .15s both;
+
+  animation:
+    heroFrameIn 1.4s cubic-bezier(.16,1,.3,1) .15s both;
 }
 
 .hero-video {
   position:absolute;
   inset:0;
+
   width:100%;
   height:100%;
+
   object-fit:cover;
   object-position:center center;
+
   z-index:0;
+
   will-change:transform;
-  animation:heroIn 2.2s cubic-bezier(.16,1,.3,1) forwards;
+
+  animation:
+    heroIn 2.2s cubic-bezier(.16,1,.3,1) forwards;
+
   transform:translateZ(0);
 }
 
 .hero-overlay {
   position:absolute;
   inset:0;
+
   background:
     linear-gradient(
       180deg,
-      rgba(30,27,25,.42) 0%,
-      rgba(30,27,25,.10) 45%,
-      rgba(30,27,25,.56) 100%
+      rgba(10,10,10,.36) 0%,
+      rgba(10,10,10,.06) 43%,
+      rgba(10,10,10,.58) 100%
     );
+
   z-index:1;
 }
 
 .hero-inner::after {
   content:'';
+
   position:absolute;
   inset:0;
+
   z-index:2;
+
   pointer-events:none;
-  background:
-    linear-gradient(to right,
-      var(--paper) 0%,
-      transparent 3.5%,
-      transparent 96.5%,
-      var(--paper) 100%),
-    linear-gradient(to bottom,
-      var(--paper) 0%,
-      transparent 3%,
-      transparent 95%,
-      var(--paper) 100%);
-  opacity:.2;
+
+  box-shadow:
+    inset 0 0 90px rgba(0,0,0,.18);
 }
 
 .hero-content {
   position:relative;
   z-index:3;
-  width:100%;
-  padding:0 1.4rem;
-  transform:translateY(40%);
-}
 
-.hero-label {
-  display:block;
-  font-size:.7rem;
-  letter-spacing:.32em;
-  text-transform:uppercase;
-  color:var(--warm-light);
-  margin-bottom:1.4rem;
-  opacity:0;
-  animation:up 1s .3s ease forwards;
+  width:100%;
+
+  padding:0 1.4rem;
+
+  transform:translateY(32%);
 }
 
 .hero h1 {
-  font-size:clamp(2.8rem,6vw,4.7rem);
   color:var(--white);
-  margin-bottom:.55rem;
-  opacity:0;
-  animation:up 1.05s .5s ease forwards;
-  text-align:center;
-}
 
-.hero-name,
-.hero-service,
-.hero-motto {
-  display:block;
+  opacity:0;
+
+  animation:
+    up 1.05s .42s ease forwards;
 }
 
 .hero-name {
-  margin-bottom:.08em;
+  display:block;
+
+  font-size:clamp(3.3rem,7vw,6.5rem);
+
+  letter-spacing:.015em;
+
+  margin-bottom:.02em;
 }
 
 .hero-service {
-  font-size:.78em;
-  letter-spacing:.12em;
+  display:block;
+
+  font-family:'Outfit',sans-serif;
+
+  font-size:clamp(.72rem,1.1vw,.95rem);
+
+  font-weight:400;
+
+  letter-spacing:.38em;
+
   text-transform:uppercase;
+
+  padding-left:.38em;
 }
 
 .hero-motto {
+  display:block;
+
+  margin-top:1.6rem;
+
   font-family:'Cormorant Garamond',serif;
   font-style:italic;
-  font-size:clamp(1.15rem,2vw,1.45rem);
-  color:var(--warm-light);
-  margin-top:.65rem;
-  opacity:0;
-  animation:up 1s .65s ease forwards;
-}
 
-.hero-subtitle {
-  font-size:.68rem;
-  letter-spacing:.22em;
-  text-transform:uppercase;
-  color:var(--warm-light);
-  margin-bottom:1.5rem;
+  font-size:clamp(2rem,4vw,3.6rem);
+
+  line-height:.95;
+
+  color:var(--white);
+
   opacity:0;
-  animation:up 1s .7s ease forwards;
+
+  animation:
+    up 1.05s .62s ease forwards;
 }
 
 .hero-buttons {
   display:flex;
-  gap:.9rem;
+  gap:.75rem;
+
   justify-content:center;
+
   flex-wrap:wrap;
+
+  margin-top:2rem;
+
   opacity:0;
-  animation:up 1.05s .8s ease forwards;
+
+  animation:
+    up 1.05s .82s ease forwards;
 }
 
 .hero-buttons .btn {
-  padding:.95rem 2rem;
+  padding:.9rem 1.8rem;
 }
 
 @keyframes up {
+
   from {
     opacity:0;
     transform:translateY(28px);
   }
+
   to {
     opacity:1;
     transform:translateY(0);
   }
+
 }
 
 @keyframes heroIn {
+
   from {
     opacity:0;
     transform:scale(1.12);
   }
+
   to {
     opacity:1;
     transform:scale(1.05);
   }
+
 }
 
 @keyframes heroFrameIn {
+
   from {
     opacity:0;
     transform:scale(.98);
   }
+
   to {
     opacity:1;
     transform:scale(1);
   }
+
 }
+
+/* =========================
+   SCROLL HINT
+========================= */
 
 .scroll-hint {
   position:absolute;
+
   bottom:2.8rem;
   left:50%;
+
   width:100px;
+
   transform:translateX(-50%);
+
   z-index:4;
-  color:rgba(255,252,248,.45);
-  font-size:.62rem;
-  letter-spacing:.18em;
+
+  color:rgba(247,244,239,.42);
+
+  font-size:.6rem;
+  letter-spacing:.2em;
   text-transform:uppercase;
+
   text-align:center;
+
   opacity:0;
-  animation:scrollHintUp .9s 1.4s ease forwards;
+
+  animation:
+    scrollHintUp .9s 1.4s ease forwards;
 }
 
 @keyframes scrollHintUp {
+
   from {
     opacity:0;
     transform:translateX(-50%) translateY(28px);
   }
+
   to {
     opacity:1;
     transform:translateX(-50%) translateY(0);
   }
+
 }
 
 /* =========================
-   INTRO
+   WORKS
 ========================= */
 
-.intro {
-  padding:8rem 8% 7rem;
+.works {
+  padding:6rem 4% 0;
+}
+
+.work-block {
   display:grid;
-  grid-template-columns:1fr 1.15fr;
-  gap:8%;
-  align-items:end;
+
+  grid-template-columns:
+    minmax(0,2.15fr)
+    minmax(240px,.85fr);
+
+  min-height:650px;
+
+  margin-bottom:32px;
+
+  border-top:1px solid var(--line-soft);
+
+  background:var(--bg-soft);
 }
 
-.intro-label {
-  font-size:.68rem;
-  letter-spacing:.25em;
-  text-transform:uppercase;
-  color:var(--warm);
-  margin-bottom:1rem;
+.work-block.reverse {
+  grid-template-columns:
+    minmax(240px,.85fr)
+    minmax(0,2.15fr);
 }
 
-.intro h2 {
-  font-size:clamp(2.7rem,5vw,4.5rem);
-  max-width:560px;
-}
-
-.intro-copy {
-  max-width:480px;
-  color:var(--ink-soft);
-  font-size:1rem;
-}
-
-.intro-copy p + p {
-  margin-top:1rem;
-}
-
-/* =========================
-   SECTION
-========================= */
-
-.section-pad {
-  padding:0 4%;
-  margin:32px 0;
-}
-
-/* =========================
-   PHOTO FULL
-========================= */
-
-.photo-full {
+.work-photo {
   position:relative;
-  height:82vh;
-  min-height:520px;
-  border-radius:16px;
+
+  min-height:650px;
+
   overflow:hidden;
-  box-shadow:0 16px 48px rgba(37,35,33,.08);
+
   cursor:pointer;
+
+  background:var(--bg-light);
 }
 
-.photo-full img {
+.work-photo img {
   width:100%;
   height:100%;
+
+  display:block;
+
   object-fit:cover;
-  transition:transform 1.1s cubic-bezier(.22,1,.36,1);
+
+  transform:scale(1.055);
+
+  transition:
+    transform 1.25s cubic-bezier(.16,1,.3,1);
 }
 
-.photo-full:hover img {
-  transform:scale(1.04);
+.work-photo:hover img {
+  transform:scale(1.025);
 }
 
-.photo-full::after {
+.work-photo::after {
   content:'';
+
   position:absolute;
   inset:0;
+
   pointer-events:none;
+
   background:
-    linear-gradient(to right,
-      var(--paper) 0%,
-      transparent 4%,
-      transparent 96%,
-      var(--paper) 100%),
-    linear-gradient(to bottom,
-      var(--paper) 0%,
-      transparent 3.5%,
-      transparent 94%,
-      var(--paper) 100%);
-  opacity:.16;
+    linear-gradient(
+      180deg,
+      transparent 55%,
+      rgba(0,0,0,.22) 100%
+    );
 }
 
-.photo-full .overlay {
+.work-open {
   position:absolute;
-  inset:0;
-  background:linear-gradient(
-    to top,
-    rgba(30,27,25,.7) 0%,
-    rgba(30,27,25,.15) 50%,
-    transparent 100%
-  );
+
+  right:1.5rem;
+  bottom:1.5rem;
+
+  z-index:3;
+
+  width:46px;
+  height:46px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  border:1px solid rgba(247,244,239,.48);
+
+  border-radius:50%;
+
+  color:var(--white);
+
+  background:rgba(15,15,15,.18);
+
+  backdrop-filter:blur(8px);
+
+  font-size:1rem;
+
+  opacity:.9;
+
+  transition:
+    background .3s ease,
+    transform .3s ease;
+}
+
+.work-photo:hover .work-open {
+  background:rgba(15,15,15,.48);
+  transform:translateY(-3px);
+}
+
+.work-copy {
+  padding:4rem 4rem;
+
   display:flex;
   flex-direction:column;
-  justify-content:flex-end;
-  padding:3rem 2.5rem;
-  color:var(--white);
-  z-index:2;
-}
+  justify-content:center;
 
-.photo-full .overlay h2 {
-  font-size:clamp(2rem,3.5vw,2.8rem);
-  margin-bottom:.3rem;
-}
-
-.photo-full .overlay p {
-  font-size:.95rem;
-  opacity:.85;
-  max-width:420px;
-}
-
-/* =========================
-   2 / 3
-========================= */
-
-.layout-23 {
-  display:grid;
-  grid-template-columns:2fr 1fr;
-  gap:20px;
-}
-
-.layout-23-reverse {
-  grid-template-columns:1fr 2fr;
-}
-
-.layout-23 .big,
-.layout-23 .small {
   position:relative;
-  border-radius:16px;
-  overflow:hidden;
-  box-shadow:0 14px 40px rgba(37,35,33,.07);
-  cursor:pointer;
 }
 
-.layout-23 .big,
-.layout-23 .small {
-  height:70vh;
-  min-height:480px;
-}
-
-.layout-23 img {
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  transform:scale(1.08);
-  opacity:0;
-  clip-path:inset(7% 0 7% 0);
-  transition:
-    transform 1.5s cubic-bezier(.16,1,.3,1),
-    opacity 1s ease,
-    clip-path 1.5s cubic-bezier(.16,1,.3,1);
-}
-
-.layout-23 .visible img {
-  transform:scale(1);
-  opacity:1;
-  clip-path:inset(0 0 0 0);
-}
-
-.layout-23 .big:hover img,
-.layout-23 .small:hover img {
-  transform:scale(1.05);
-}
-
-.layout-23 .big::after,
-.layout-23 .small::after {
-  content:'';
-  position:absolute;
-  inset:0;
-  pointer-events:none;
-  background:
-    linear-gradient(to right,
-      var(--paper) 0%,
-      transparent 5%,
-      transparent 95%,
-      var(--paper) 100%),
-    linear-gradient(to bottom,
-      var(--paper) 0%,
-      transparent 4%,
-      transparent 93%,
-      var(--paper) 100%);
-  opacity:.13;
-}
-
-.label {
-  position:absolute;
-  bottom:0;
-  left:0;
-  right:0;
-  padding:1.8rem 1.6rem;
-  background:linear-gradient(to top,rgba(30,27,25,.78),transparent);
-  color:var(--white);
-  z-index:2;
-}
-
-.label h3 {
-  font-size:1.55rem;
-  margin-bottom:.1rem;
-}
-
-.label span {
-  display:block;
-  font-family:'Outfit',sans-serif;
-  font-size:.68rem;
-  letter-spacing:.22em;
-  line-height:1.65;
-  text-transform:uppercase;
-  color:var(--white);
-}
-
-/* =========================
-   SPLIT TEXT
-========================= */
-
-.story {
-  padding:6rem 8%;
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:9%;
-  align-items:center;
-}
-
-.story.reverse .story-copy {
-  order:2;
-}
-
-.story.reverse .story-number {
-  order:1;
-}
-
-.story-number {
-  font-size:.68rem;
+.work-number {
+  font-size:.62rem;
   letter-spacing:.25em;
   text-transform:uppercase;
-  color:var(--warm);
-  margin-bottom:1rem;
+
+  color:var(--text-muted);
+
+  margin-bottom:1.2rem;
 }
 
-.story h2 {
-  font-size:clamp(2.3rem,4vw,3.8rem);
-  margin-bottom:1rem;
+.work-copy h2 {
+  font-size:clamp(2.5rem,4.5vw,5rem);
+
+  color:var(--text);
+
+  margin-bottom:1.2rem;
 }
 
-.story p {
-  max-width:470px;
-  color:var(--ink-soft);
-  font-size:1rem;
+.work-copy p {
+  max-width:300px;
+
+  color:var(--text-soft);
+
+  font-size:.88rem;
+
+  line-height:1.75;
 }
 
-.story-note {
-  margin-top:1.5rem;
-  font-size:.67rem !important;
+.work-meta {
+  margin-top:2rem;
+
+  font-size:.61rem;
   letter-spacing:.18em;
   text-transform:uppercase;
-  color:var(--warm) !important;
+
+  color:var(--text-muted);
 }
 
 /* =========================
-   1 / 2
+   CONTACT
 ========================= */
 
-.layout-12 {
-  display:grid;
-  grid-template-columns:1fr 1fr;
-  gap:20px;
+.contact {
+  padding:7rem 8% 8rem;
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+
+  text-align:center;
 }
 
-.layout-12 .cell {
-  position:relative;
-  height:62vh;
-  min-height:380px;
-  border-radius:16px;
-  overflow:hidden;
-  box-shadow:0 14px 40px rgba(37,35,33,.07);
-  cursor:pointer;
+.contact-label {
+  font-size:.62rem;
+  letter-spacing:.25em;
+  text-transform:uppercase;
+
+  color:var(--text-muted);
+
+  margin-bottom:1.2rem;
 }
 
-.layout-12 img {
-  width:100%;
-  height:100%;
-  object-fit:cover;
-  transform:scale(1.08);
-  opacity:0;
-  transition:
-    transform 1.45s cubic-bezier(.16,1,.3,1),
-    opacity 1.05s ease;
+.contact h2 {
+  font-size:clamp(3rem,6vw,6rem);
+
+  color:var(--text);
+
+  margin-bottom:1.5rem;
 }
 
-.layout-12 .visible img {
-  transform:scale(1);
-  opacity:1;
+.contact p {
+  max-width:500px;
+
+  color:var(--text-soft);
+
+  font-size:.9rem;
+
+  margin-bottom:2rem;
 }
 
-.layout-12 .cell:hover img {
-  transform:scale(1.05);
-}
-
-.layout-12 .cell::after {
-  content:'';
-  position:absolute;
-  inset:0;
-  pointer-events:none;
-  background:
-    linear-gradient(to right,
-      var(--paper) 0%,
-      transparent 5%,
-      transparent 95%,
-      var(--paper) 100%),
-    linear-gradient(to bottom,
-      var(--paper) 0%,
-      transparent 4%,
-      transparent 93%,
-      var(--paper) 100%);
-  opacity:.13;
+.contact .btn {
+  min-width:190px;
 }
 
 /* =========================
-   3 COLUMNS
+   GALLERY
 ========================= */
 
-.layout-33 {
+.gallery {
+  padding:5rem 4% 2rem;
+}
+
+.gallery-heading {
+  display:flex;
+  align-items:flex-end;
+  justify-content:space-between;
+
+  padding:0 2% 2rem;
+
+  border-bottom:1px solid var(--line-soft);
+
+  margin-bottom:24px;
+}
+
+.gallery-heading h2 {
+  font-size:clamp(2.8rem,5vw,5rem);
+}
+
+.gallery-heading span {
+  font-size:.62rem;
+  letter-spacing:.2em;
+  text-transform:uppercase;
+
+  color:var(--text-muted);
+}
+
+/*
+   Different image formats.
+*/
+
+.gallery-grid {
   display:grid;
-  grid-template-columns:repeat(3,1fr);
+
+  grid-template-columns:
+    repeat(12,1fr);
+
+  grid-auto-rows:9vw;
+
   gap:18px;
 }
 
-.layout-33 .cell {
+.gallery-item {
   position:relative;
-  height:52vh;
-  min-height:320px;
-  border-radius:16px;
+
   overflow:hidden;
-  box-shadow:0 14px 40px rgba(37,35,33,.07);
+
   cursor:pointer;
+
+  background:var(--bg-light);
 }
 
-.layout-33 img {
+.gallery-item img {
   width:100%;
   height:100%;
+
+  display:block;
+
   object-fit:cover;
-  transform:scale(1.08);
-  opacity:0;
+
   transition:
-    transform 1.45s cubic-bezier(.16,1,.3,1),
-    opacity 1.05s ease;
+    transform 1.1s cubic-bezier(.16,1,.3,1);
 }
 
-.layout-33 .visible img {
-  transform:scale(1);
-  opacity:1;
+.gallery-item:hover img {
+  transform:scale(1.035);
 }
 
-.layout-33 .cell:hover img {
-  transform:scale(1.05);
+.gallery-item:nth-child(1) {
+  grid-column:span 7;
+  grid-row:span 6;
 }
 
-.layout-33 .cell::after {
+.gallery-item:nth-child(2) {
+  grid-column:span 5;
+  grid-row:span 6;
+}
+
+.gallery-item:nth-child(3) {
+  grid-column:span 4;
+  grid-row:span 5;
+}
+
+.gallery-item:nth-child(4) {
+  grid-column:span 8;
+  grid-row:span 5;
+}
+
+.gallery-item:nth-child(5) {
+  grid-column:span 5;
+  grid-row:span 6;
+}
+
+.gallery-item:nth-child(6) {
+  grid-column:span 7;
+  grid-row:span 6;
+}
+
+.gallery-item:nth-child(7) {
+  grid-column:span 3;
+  grid-row:span 5;
+}
+
+.gallery-item:nth-child(8) {
+  grid-column:span 5;
+  grid-row:span 5;
+}
+
+.gallery-item:nth-child(9) {
+  grid-column:span 4;
+  grid-row:span 5;
+}
+
+.gallery-item::after {
   content:'';
+
   position:absolute;
   inset:0;
+
   pointer-events:none;
-  background:
-    linear-gradient(to right,
-      var(--paper) 0%,
-      transparent 6%,
-      transparent 94%,
-      var(--paper) 100%),
-    linear-gradient(to bottom,
-      var(--paper) 0%,
-      transparent 5%,
-      transparent 92%,
-      var(--paper) 100%);
-  opacity:.12;
+
+  background:rgba(0,0,0,.04);
+
+  transition:background .4s ease;
 }
 
-/* =========================
-   COLLECTION INTRO
-========================= */
-
-.collection-intro {
-  padding:7rem 8% 5rem;
-  text-align:center;
-}
-
-.collection-intro .eyebrow {
-  font-size:.68rem;
-  letter-spacing:.25em;
-  text-transform:uppercase;
-  color:var(--warm);
-  margin-bottom:1rem;
-}
-
-.collection-intro h2 {
-  font-size:clamp(2.6rem,5vw,4.3rem);
-  margin-bottom:1rem;
-}
-
-.collection-intro p {
-  max-width:520px;
-  margin:0 auto;
-  color:var(--ink-soft);
-}
-
-/* =========================
-   CTA / CONTACT
-========================= */
-
-.inquiry {
-  position:relative;
-  padding:0;
-  margin:36px 4% 20px;
-  border-radius:20px;
-  overflow:hidden;
-  min-height:560px;
-  box-shadow:0 18px 55px rgba(37,35,33,.08);
-}
-
-.inquiry-bg {
-  position:absolute;
-  inset:0;
-  z-index:0;
-}
-
-.inquiry-bg img {
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
-
-.inquiry-veil {
-  position:absolute;
-  inset:0;
-  background:
-    linear-gradient(
-      100deg,
-      rgba(243,240,235,.95) 0%,
-      rgba(243,240,235,.84) 42%,
-      rgba(37,35,33,.2) 100%
-    );
-  z-index:1;
-}
-
-.inquiry-inner {
-  position:relative;
-  z-index:2;
-  max-width:520px;
-  margin-left:8%;
-  padding:3.2rem 2.8rem;
-}
-
-.inquiry-label {
-  display:block;
-  font-size:.7rem;
-  letter-spacing:.28em;
-  text-transform:uppercase;
-  color:var(--warm-deep);
-  margin-bottom:.85rem;
-}
-
-.inquiry-text h2 {
-  font-size:clamp(2.2rem,3.5vw,2.9rem);
-  margin-bottom:.7rem;
-  color:var(--ink);
-}
-
-.inquiry-text > p {
-  color:var(--ink-soft);
-  font-size:.88rem;
-  margin-bottom:1.6rem;
-  line-height:1.7;
-  max-width:390px;
-}
-
-.inquiry-form .field {
-  margin-bottom:1rem;
-}
-
-.inquiry-form label {
-  display:block;
-  font-size:.68rem;
-  letter-spacing:.1em;
-  text-transform:uppercase;
-  color:var(--ink-soft);
-  margin-bottom:.35rem;
-}
-
-.inquiry-form input,
-.inquiry-form select {
-  width:100%;
-  height:46px;
-  padding:.8rem 1rem;
-  border:1px solid rgba(37,35,33,.2);
-  border-radius:8px;
-  background:rgba(255,252,248,.86);
-  backdrop-filter:blur(6px);
-  color:var(--ink);
-  outline:none;
-  transition:border-color .25s,background .25s;
-}
-
-.inquiry-form input:focus,
-.inquiry-form select:focus {
-  border-color:var(--warm);
-  background:rgba(255,252,248,.96);
-}
-
-.inquiry-submit {
-  width:100%;
-  margin-top:.5rem;
-  padding:.95rem;
-}
-
-.inquiry-note {
-  text-align:center;
-  font-size:.65rem;
-  letter-spacing:.2em;
-  text-transform:uppercase;
-  color:var(--ink-soft);
-  margin:1.1rem 0 .6rem;
-}
-
-.inquiry-messengers {
-  display:flex;
-  gap:.65rem;
-}
-
-.inquiry-messengers .btn {
-  flex:1;
-  padding:.7rem;
-  font-size:.65rem;
-}
-
-.inquiry-success {
-  display:none;
-  text-align:center;
-  color:var(--warm-deep);
-  margin-top:1rem;
-}
-
-.inquiry-form.sent .field,
-.inquiry-form.sent .inquiry-submit,
-.inquiry-form.sent .inquiry-note,
-.inquiry-form.sent .inquiry-messengers {
-  display:none;
-}
-
-.inquiry-form.sent .inquiry-success {
-  display:block;
+.gallery-item:hover::after {
+  background:rgba(0,0,0,0);
 }
 
 /* =========================
@@ -981,59 +829,83 @@ nav.scrolled .nav-cta .btn {
    SAME CONSTRUCTION
 ========================= */
 
-.footer-trigger {
-  position:absolute;
-  top:0;
-  left:0;
-  width:1px;
-  height:1px;
-  pointer-events:none;
+.footer-mobile-top {
+  display:none;
 }
 
 .liora-footer {
   position:relative;
+
   margin:0 3.5% 28px;
+
   min-height:620px;
+
   padding:0 4% 1.8rem;
+
   background:var(--dark);
+
   color:var(--white);
+
   border-radius:16px;
+
   overflow:hidden;
-  box-shadow:0 16px 48px rgba(37,35,33,.12);
+
+  box-shadow:0 16px 48px rgba(0,0,0,.22);
 }
 
 .footer-stage {
   position:absolute;
+
   inset:0;
+
   z-index:2;
+
   max-width:1280px;
+
   width:100%;
+
   margin:0 auto;
 }
 
 .footer-title {
   position:absolute;
+
   left:-4%;
   top:50%;
+
   transform:translateY(-50%);
+
   z-index:1;
+
   display:flex;
   flex-direction:column;
+
   font-family:'Cormorant Garamond',serif;
+
   font-size:clamp(3.2rem,5vw,5.4rem);
+
   line-height:.82;
+
   font-weight:500;
-  color:var(--paper);
+
+  color:var(--text);
+
   letter-spacing:-.045em;
+
   white-space:nowrap;
+
   width:clamp(430px,42vw,620px);
+
   align-items:stretch;
 }
 
 .footer-title span {
   display:block;
+
   width:max-content;
+
   margin-left:0 !important;
+
   transform-origin:left center;
 }
 
@@ -1051,53 +923,82 @@ nav.scrolled .nav-cta .btn {
 
 .footer-figure {
   position:absolute;
+
   z-index:2;
+
   left:50%;
   bottom:0;
+
   transform:translateX(-50%);
+
   height:100%;
+
   display:flex;
   align-items:flex-end;
   justify-content:center;
+
   pointer-events:none;
+
   margin-bottom:-3.5rem;
 }
 
 .footer-figure img {
   display:block;
+
   height:100%;
   width:auto;
+
   max-width:none;
+
   object-fit:contain;
   object-position:center bottom;
-  filter:drop-shadow(0 18px 30px rgba(37,35,33,.18));
+
+  filter:
+    drop-shadow(0 18px 30px rgba(0,0,0,.28));
 }
 
 .footer-actions {
   position:absolute;
+
   z-index:3;
+
   right:0;
   top:50%;
+
   transform:translateY(-50%);
+
   display:flex;
   flex-direction:column;
+
   align-items:stretch;
+
   gap:.65rem;
+
   width:180px;
 }
 
 .footer-actions a {
   display:flex;
+
   align-items:center;
   justify-content:center;
+
   min-height:42px;
+
   padding:.7rem 1rem;
-  border:1px solid rgba(255,252,248,.48);
-  color:var(--paper);
-  font-size:.65rem;
+
+  border:1px solid rgba(247,244,239,.38);
+
+  color:var(--text);
+
+  font-size:.62rem;
+
   letter-spacing:.1em;
+
   text-transform:uppercase;
+
   white-space:nowrap;
+
   transition:
     background .35s ease,
     border-color .35s ease,
@@ -1106,130 +1007,86 @@ nav.scrolled .nav-cta .btn {
 }
 
 .footer-actions a:hover {
-  background:rgba(243,240,235,.1);
-  border-color:var(--warm-light);
-  color:var(--warm-light);
+  background:rgba(247,244,239,.08);
+
+  border-color:rgba(247,244,239,.7);
+
+  color:var(--white);
+
   transform:translateY(-3px);
 }
 
 .footer-actions .footer-action-main {
-  background:var(--warm-deep);
-  border-color:var(--warm-deep);
-  color:var(--white);
+  background:var(--text);
+
+  border-color:var(--text);
+
+  color:var(--dark);
 }
 
 .footer-actions .footer-action-main:hover {
-  background:var(--warm);
-  border-color:var(--warm);
-  color:var(--white);
+  background:var(--white);
+
+  border-color:var(--white);
+
+  color:var(--dark);
 }
 
 .liora-footer .footer-bottom {
   position:absolute;
+
   left:4%;
   right:4%;
   bottom:1.8rem;
+
   z-index:0;
+
   max-width:1280px;
+
   margin:0 auto;
+
   padding-top:1.2rem;
-  border-top:1px solid rgba(255,252,248,.16);
+
+  border-top:1px solid rgba(247,244,239,.12);
+
   display:flex;
+
   justify-content:space-between;
-  font-size:.72rem;
-  color:rgba(255,252,248,.55);
-}
 
-/* =========================
-   MOBILE FOOTER
-   SAME CONSTRUCTION
-========================= */
+  font-size:.68rem;
 
-.footer-mobile-top {
-  display:none;
-}
-
-@media (max-width:600px) {
-
-  .footer-mobile-top {
-    display:block;
-    margin:20px 3.5% 0;
-    padding:2.4rem 1.4rem 1.8rem;
-    background:var(--dark);
-    color:var(--white);
-    border-radius:14px 14px 0 0;
-  }
-
-  .footer-mobile-title {
-    display:flex;
-    flex-direction:column;
-    align-items:center;
-    font-family:'Cormorant Garamond',serif;
-    font-size:clamp(2.5rem,11vw,3.8rem);
-    line-height:.86;
-    font-weight:500;
-    color:var(--paper);
-    letter-spacing:-.045em;
-    white-space:nowrap;
-  }
-
-  .footer-mobile-actions {
-    display:flex;
-    flex-direction:column;
-    gap:.65rem;
-    margin-top:2rem;
-  }
-
-  .footer-mobile-actions a {
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    min-height:42px;
-    padding:.7rem 1rem;
-    border:1px solid rgba(255,252,248,.48);
-    color:var(--paper);
-    font-size:.65rem;
-    letter-spacing:.1em;
-    text-transform:uppercase;
-  }
-
-  .footer-mobile-actions .footer-action-main {
-    background:var(--warm-deep);
-    border-color:var(--warm-deep);
-    color:var(--white);
-  }
-
-  .liora-footer .footer-title,
-  .liora-footer .footer-actions,
-  .liora-footer .footer-bottom {
-    display:none;
-  }
-
-  .liora-footer {
-    border-radius:0;
-    box-shadow:none;
-    background:var(--dark);
-  }
+  color:rgba(247,244,239,.42);
 }
 
 /* =========================
    MODAL
+   FOR SERVICE BLOCKS ONLY
 ========================= */
 
 .modal-backdrop {
   position:fixed;
+
   inset:0;
-  background:rgba(30,27,25,.58);
-  backdrop-filter:blur(10px);
+
+  background:rgba(8,8,8,.72);
+
+  backdrop-filter:blur(12px);
+
   z-index:400;
+
   opacity:0;
+
   visibility:hidden;
+
   transition:
-    opacity .5s cubic-bezier(.22,1,.36,1),
-    visibility .5s cubic-bezier(.22,1,.36,1);
+    opacity .45s ease,
+    visibility .45s ease;
+
   display:flex;
+
   align-items:center;
   justify-content:center;
+
   padding:2rem;
 }
 
@@ -1240,119 +1097,258 @@ nav.scrolled .nav-cta .btn {
 
 .modal-card {
   position:relative;
-  background:var(--white);
-  border-radius:20px;
+
+  width:min(1000px,94vw);
+
+  height:min(610px,86vh);
+
+  background:var(--bg-soft);
+
+  border:1px solid var(--line);
+
   overflow:hidden;
-  width:min(1100px,94vw);
-  height:min(640px,86vh);
+
   display:grid;
-  grid-template-columns:1.35fr 1fr;
-  box-shadow:0 28px 90px rgba(37,35,33,.22);
-  transform:translateY(40px) scale(.96);
+
+  grid-template-columns:1.3fr 1fr;
+
+  box-shadow:
+    0 30px 100px rgba(0,0,0,.45);
+
+  transform:
+    translateY(35px)
+    scale(.97);
+
   opacity:0;
+
   transition:
     transform .55s cubic-bezier(.22,1,.36,1),
     opacity .55s cubic-bezier(.22,1,.36,1);
 }
 
 .modal-backdrop.open .modal-card {
-  transform:translateY(0) scale(1);
+  transform:
+    translateY(0)
+    scale(1);
+
   opacity:1;
 }
 
 .modal-photo {
   position:relative;
+
   height:100%;
-  min-height:0;
+
   overflow:hidden;
 }
 
 .modal-photo img {
   width:100%;
   height:100%;
-  object-fit:cover;
+
   display:block;
+
+  object-fit:cover;
 }
 
 .modal-info {
   padding:3rem 2.8rem;
+
   display:flex;
   flex-direction:column;
   justify-content:center;
 }
 
 .modal-info .tag {
-  font-size:.7rem;
+  font-size:.62rem;
+
   letter-spacing:.2em;
+
   text-transform:uppercase;
-  color:var(--warm-deep);
+
+  color:var(--text-muted);
+
   margin-bottom:.9rem;
 }
 
 .modal-info h3 {
-  font-size:2.15rem;
+  font-size:clamp(2.4rem,4vw,4rem);
+
+  color:var(--text);
+
   margin-bottom:1rem;
-  color:var(--ink);
 }
 
 .modal-info p {
-  color:var(--ink-soft);
-  font-size:.92rem;
-  line-height:1.7;
+  color:var(--text-soft);
+
+  font-size:.9rem;
+
+  line-height:1.75;
+
+  max-width:360px;
+
   margin-bottom:2rem;
 }
 
 .modal-close {
   position:absolute;
-  top:1.2rem;
-  right:1.2rem;
-  width:40px;
-  height:40px;
+
+  top:1rem;
+  right:1rem;
+
+  width:42px;
+  height:42px;
+
   border-radius:50%;
-  background:rgba(255,252,248,.9);
-  border:none;
+
+  background:rgba(10,10,10,.55);
+
+  border:1px solid rgba(247,244,239,.35);
+
+  color:var(--white);
+
   cursor:pointer;
+
   display:flex;
+
   align-items:center;
   justify-content:center;
-  font-size:1.3rem;
-  color:var(--ink);
+
+  font-size:1.35rem;
+
   z-index:5;
-  transition:background .3s;
+
+  transition:
+    background .3s ease,
+    border-color .3s ease;
 }
 
 .modal-close:hover {
-  background:var(--white);
+  background:rgba(10,10,10,.8);
+
+  border-color:rgba(247,244,239,.7);
 }
 
-.modal-nav {
-  position:absolute;
-  left:1rem;
-  right:1rem;
-  top:50%;
-  transform:translateY(-50%);
+/* =========================
+   GALLERY LIGHTBOX
+========================= */
+
+.gallery-lightbox {
+  position:fixed;
+
+  inset:0;
+
+  z-index:500;
+
+  background:rgba(5,5,5,.94);
+
+  backdrop-filter:blur(14px);
+
+  opacity:0;
+
+  visibility:hidden;
+
+  transition:
+    opacity .4s ease,
+    visibility .4s ease;
+
   display:flex;
-  justify-content:space-between;
-  pointer-events:none;
-  z-index:4;
+
+  align-items:center;
+  justify-content:center;
+
+  padding:4rem 6rem;
 }
 
-.modal-nav button {
-  pointer-events:auto;
-  width:42px;
-  height:42px;
+.gallery-lightbox.open {
+  opacity:1;
+  visibility:visible;
+}
+
+.gallery-lightbox img {
+  max-width:92vw;
+  max-height:86vh;
+
+  width:auto;
+  height:auto;
+
+  object-fit:contain;
+
+  box-shadow:
+    0 30px 100px rgba(0,0,0,.5);
+
+  transform:scale(.97);
+
+  transition:
+    transform .45s cubic-bezier(.22,1,.36,1);
+}
+
+.gallery-lightbox.open img {
+  transform:scale(1);
+}
+
+.gallery-close {
+  position:absolute;
+
+  top:1.2rem;
+  right:1.4rem;
+
+  width:44px;
+  height:44px;
+
   border-radius:50%;
-  border:1px solid rgba(255,252,248,.65);
-  background:rgba(30,27,25,.35);
-  backdrop-filter:blur(6px);
+
+  border:1px solid rgba(247,244,239,.4);
+
+  background:transparent;
+
   color:var(--white);
+
   cursor:pointer;
-  font-size:1.2rem;
-  transition:background .3s;
+
+  font-size:1.4rem;
 }
 
-.modal-nav button:hover {
-  background:rgba(30,27,25,.65);
+.gallery-arrow {
+  position:absolute;
+
+  top:50%;
+
+  transform:translateY(-50%);
+
+  width:52px;
+  height:52px;
+
+  border-radius:50%;
+
+  border:1px solid rgba(247,244,239,.35);
+
+  background:rgba(10,10,10,.28);
+
+  color:var(--white);
+
+  cursor:pointer;
+
+  font-size:1.15rem;
+
+  transition:
+    background .3s ease,
+    border-color .3s ease;
+}
+
+.gallery-arrow:hover {
+  background:rgba(247,244,239,.1);
+
+  border-color:rgba(247,244,239,.7);
+}
+
+.gallery-prev {
+  left:1.5rem;
+}
+
+.gallery-next {
+  right:1.5rem;
 }
 
 /* =========================
@@ -1361,77 +1357,123 @@ nav.scrolled .nav-cta .btn {
 
 .floating-phone {
   position:fixed;
+
   right:28px;
   bottom:28px;
+
   width:54px;
   height:54px;
+
   border-radius:50%;
-  background:var(--warm);
-  color:var(--white);
+
+  background:var(--text);
+
+  color:var(--dark);
+
   border:none;
+
   display:flex;
+
   align-items:center;
   justify-content:center;
+
   z-index:350;
-  box-shadow:0 10px 28px rgba(37,35,33,.16);
+
+  box-shadow:
+    0 10px 28px rgba(0,0,0,.25);
+
   opacity:0;
-  transform:translateY(22px) scale(.82);
+
+  transform:
+    translateY(22px)
+    scale(.82);
+
   transition:
     opacity .5s ease,
-    transform .6s cubic-bezier(.16,1,.3,1),
-    background .3s ease;
+    transform .6s cubic-bezier(.16,1,.3,1);
+
   pointer-events:none;
+
+  cursor:pointer;
 }
 
 .floating-phone.visible {
   opacity:1;
-  transform:translateY(0) scale(1);
+
+  transform:
+    translateY(0)
+    scale(1);
+
   pointer-events:auto;
 }
 
 .floating-phone.visible svg {
-  animation:phoneRock 1.8s ease-in-out infinite;
-  transform-origin:50% 50%;
-}
+  animation:
+    phoneRock 1.8s ease-in-out infinite;
 
-.floating-phone:hover {
-  background:var(--warm-deep);
+  transform-origin:50% 50%;
 }
 
 .floating-phone svg {
   width:21px;
   height:21px;
+
   stroke:currentColor;
   stroke-width:1.7;
+
   fill:none;
 }
 
 @keyframes phoneRock {
+
   0%,55%,100% {
     transform:rotate(0deg);
   }
+
   8% {
     transform:rotate(-22deg);
   }
+
   16% {
     transform:rotate(22deg);
   }
+
   24% {
     transform:rotate(-20deg);
   }
+
   32% {
     transform:rotate(20deg);
   }
+
   40% {
     transform:rotate(-12deg);
   }
+
   48% {
     transform:rotate(12deg);
   }
+
 }
 
 /* =========================
-   MOBILE
+   PERFORMANCE
+========================= */
+
+.work-block,
+.gallery,
+.contact {
+  content-visibility:auto;
+  contain-intrinsic-size:1px 700px;
+}
+
+.work-photo,
+.gallery-item {
+  contain:layout style paint;
+}
+
+/* =========================
+   TABLET
 ========================= */
 
 @media (max-width:900px) {
@@ -1441,97 +1483,95 @@ nav.scrolled .nav-cta .btn {
     border-radius:12px;
   }
 
-  .intro {
+  .works {
+    padding:4rem 3% 0;
+  }
+
+  .work-block,
+  .work-block.reverse {
     grid-template-columns:1fr;
-    gap:2rem;
-    padding:6rem 7% 5rem;
-  }
 
-  .story {
-    grid-template-columns:1fr;
-    gap:1.5rem;
-    padding:5rem 7%;
-  }
-
-  .story.reverse .story-copy,
-  .story.reverse .story-number {
-    order:initial;
-  }
-
-  .layout-23 {
-    grid-template-columns:1fr;
-  }
-
-  .layout-23 .big,
-  .layout-23 .small {
-    height:52vh;
-    min-height:320px;
-  }
-
-  .layout-12 {
-    grid-template-columns:1fr;
-  }
-
-  .layout-12 .cell {
-    height:50vh;
-    min-height:300px;
-  }
-
-  .layout-33 {
-    grid-template-columns:1fr;
-  }
-
-  .layout-33 .cell {
-    height:46vh;
-    min-height:280px;
-  }
-
-  .photo-full {
-    height:60vh;
-    min-height:380px;
-  }
-
-  .inquiry {
-    margin:24px 3.5% 16px;
     min-height:auto;
   }
 
-  .inquiry-veil {
-    background:
-      linear-gradient(
-        180deg,
-        rgba(243,240,235,.95) 0%,
-        rgba(243,240,235,.89) 100%
-      );
+  .work-block.reverse .work-photo {
+    order:1;
   }
 
-  .inquiry-inner {
-    max-width:100%;
-    margin:0;
-    padding:2.2rem 1.6rem 2.4rem;
+  .work-block.reverse .work-copy {
+    order:2;
+  }
+
+  .work-photo {
+    min-height:58vh;
+  }
+
+  .work-copy {
+    min-height:280px;
+
+    padding:3rem 7%;
+  }
+
+  .gallery {
+    padding:4rem 3% 2rem;
+  }
+
+  .gallery-grid {
+    grid-auto-rows:12vw;
+  }
+
+  .contact {
+    padding:6rem 7%;
   }
 
   .modal-card {
     grid-template-columns:1fr;
-    width:min(100%,94vw);
+
     height:auto;
+
     max-height:90vh;
   }
 
   .modal-photo {
     height:42vh;
-    min-height:220px;
+    min-height:230px;
   }
 
   .modal-info {
-    padding:2rem 1.6rem;
+    padding:2rem 1.8rem 2.4rem;
   }
+
 }
+
+/* =========================
+   MOBILE
+========================= */
 
 @media (max-width:600px) {
 
+  nav {
+    padding:1rem 5%;
+  }
+
+  nav.scrolled {
+    padding:.8rem 5%;
+  }
+
   .nav-links {
     display:none;
+  }
+
+  .nav-cta .btn {
+    padding:.6rem .9rem;
+    font-size:.58rem;
+  }
+
+  .logo {
+    font-size:1.2rem;
+  }
+
+  .hero {
+    min-height:650px;
   }
 
   .hero-inner {
@@ -1539,129 +1579,348 @@ nav.scrolled .nav-cta .btn {
     border-radius:10px;
   }
 
-  .hero h1 {
-    font-size:clamp(2.35rem,10vw,3.5rem);
-    line-height:.9;
+  .hero-video {
+    object-position:68% center;
+  }
+
+  .hero-content {
+    transform:translateY(27%);
+  }
+
+  .hero-name {
+    font-size:clamp(2.9rem,15vw,4.3rem);
   }
 
   .hero-service {
-    font-size:.65em;
+    font-size:.62rem;
+    letter-spacing:.3em;
   }
 
   .hero-motto {
-    font-size:1.1rem;
+    font-size:clamp(1.8rem,9vw,2.6rem);
+
+    margin-top:1.35rem;
   }
 
-  .hero-subtitle {
-    font-size:.58rem;
-    letter-spacing:.16em;
-  }
-
-  .hero-buttons,
-  .cta-buttons {
+  .hero-buttons {
     flex-direction:column;
+
     align-items:center;
+
+    margin-top:1.7rem;
   }
 
-  .section-pad {
-    padding:0 3%;
-    margin:20px 0;
+  .hero-buttons .btn {
+    min-width:180px;
   }
 
-  .photo-full,
-  .layout-23 .big,
-  .layout-23 .small,
-  .layout-12 .cell,
-  .layout-33 .cell {
-    border-radius:12px;
+  .scroll-hint {
+    bottom:2rem;
   }
 
-  .collection-intro {
-    padding:5rem 7% 3.5rem;
+  .works {
+    padding:3rem 3% 0;
   }
 
-  .inquiry {
-    margin:20px 3% 12px;
-    border-radius:14px;
+  .work-block,
+  .work-block.reverse {
+    margin-bottom:18px;
   }
 
-  .inquiry-inner {
-    width:100%;
-    max-width:520px;
-    padding:1.8rem 1.35rem 2rem;
+  .work-photo {
+    min-height:62vh;
   }
 
-  .inquiry-text h2 {
-    font-size:1.75rem;
+  .work-copy {
+    min-height:250px;
+
+    padding:2.6rem 1.6rem;
   }
 
-  .inquiry-messengers {
+  .work-number {
+    margin-bottom:.9rem;
+  }
+
+  .work-copy h2 {
+    font-size:clamp(2.6rem,13vw,4rem);
+  }
+
+  .work-copy p {
+    font-size:.82rem;
+    max-width:290px;
+  }
+
+  .work-meta {
+    margin-top:1.4rem;
+  }
+
+  .gallery {
+    padding:3rem 3% 1rem;
+  }
+
+  .gallery-heading {
+    display:block;
+
+    padding:0 0 1.3rem;
+  }
+
+  .gallery-heading h2 {
+    font-size:clamp(2.7rem,13vw,4rem);
+  }
+
+  .gallery-heading span {
+    display:block;
+    margin-top:.5rem;
+  }
+
+  .gallery-grid {
+    grid-template-columns:1fr 1fr;
+
+    grid-auto-rows:auto;
+
+    gap:8px;
+  }
+
+  .gallery-item:nth-child(n) {
+    grid-column:auto;
+    grid-row:auto;
+
+    height:55vw;
+  }
+
+  .gallery-item:nth-child(1),
+  .gallery-item:nth-child(4),
+  .gallery-item:nth-child(6) {
+    grid-column:span 2;
+    height:72vw;
+  }
+
+  .contact {
+    padding:5rem 7% 6rem;
+  }
+
+  .contact h2 {
+    font-size:clamp(3rem,15vw,4.5rem);
+  }
+
+  .contact p {
+    font-size:.82rem;
+  }
+
+  .liora-footer {
+    display:none;
+  }
+
+  .footer-mobile-top {
+    display:block;
+
+    margin:20px 3.5% 0;
+
+    padding:2.6rem 1.4rem 1.8rem;
+
+    background:var(--dark);
+
+    color:var(--white);
+
+    border-radius:14px 14px 0 0;
+  }
+
+  .footer-mobile-title {
+    display:flex;
+
     flex-direction:column;
+
+    align-items:center;
+
+    font-family:'Cormorant Garamond',serif;
+
+    font-size:clamp(2.4rem,11vw,3.7rem);
+
+    line-height:.86;
+
+    font-weight:500;
+
+    color:var(--text);
+
+    letter-spacing:-.045em;
+
+    white-space:nowrap;
+  }
+
+  .footer-mobile-actions {
+    display:flex;
+
+    flex-direction:column;
+
+    gap:.65rem;
+
+    margin-top:2rem;
+  }
+
+  .footer-mobile-actions a {
+    display:flex;
+
+    align-items:center;
+    justify-content:center;
+
+    min-height:42px;
+
+    padding:.7rem 1rem;
+
+    border:1px solid rgba(247,244,239,.38);
+
+    color:var(--text);
+
+    font-size:.62rem;
+
+    letter-spacing:.1em;
+
+    text-transform:uppercase;
+  }
+
+  .footer-mobile-actions .footer-action-main {
+    background:var(--text);
+
+    border-color:var(--text);
+
+    color:var(--dark);
+  }
+
+  .gallery-lightbox {
+    padding:3.5rem 2.8rem;
+  }
+
+  .gallery-lightbox img {
+    max-width:100%;
+    max-height:82vh;
+  }
+
+  .gallery-arrow {
+    width:42px;
+    height:42px;
+  }
+
+  .gallery-prev {
+    left:.6rem;
+  }
+
+  .gallery-next {
+    right:.6rem;
+  }
+
+  .gallery-close {
+    top:.7rem;
+    right:.7rem;
   }
 
   .floating-phone {
     right:18px;
     bottom:18px;
+
     width:50px;
     height:50px;
   }
+
+  .modal-backdrop {
+    padding:1rem;
+  }
+
+  .modal-info {
+    padding:1.8rem 1.4rem 2rem;
+  }
+
+  .modal-info h3 {
+    font-size:2.5rem;
+  }
+
 }
 
 /* =========================
-   PERFORMANCE
+   REDUCED MOTION
 ========================= */
 
-.section-pad,
-.photo-full,
-.layout-23,
-.layout-12,
-.layout-33,
-.inquiry {
-  content-visibility:auto;
-  contain-intrinsic-size:1px 500px;
+@media (prefers-reduced-motion:reduce) {
+
+  html {
+    scroll-behavior:auto;
+  }
+
+  *,
+  *::before,
+  *::after {
+    animation-duration:.01ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:.01ms !important;
+  }
+
 }
 
-.layout-23 .big,
-.layout-23 .small,
-.layout-12 .cell,
-.layout-33 .cell,
-.photo-full {
-  contain:layout style paint;
-}
-
-.footer-figure img {
-  content-visibility:visible;
-}
 </style>
 </head>
 
 <body>
 
-<!-- FLOATING PHONE -->
+<!-- =========================
+     FLOATING PHONE
+========================= -->
 
-<button class="floating-phone" id="floatingPhone" type="button" aria-label="Позвонить">
+<button
+  class="floating-phone"
+  id="floatingPhone"
+  type="button"
+  aria-label="Позвонить"
+>
   <svg viewBox="0 0 24 24" aria-hidden="true">
     <path d="M6.6 3.5l2.1-.5c.5-.1 1 .2 1.2.7l1 2.7c.2.4.1.9-.3 1.2L9.2 9c1.1 2.2 2.7 3.8 4.9 4.9l1.4-1.4c.3-.3.8-.4 1.2-.3l2.7 1c.5.2.8.7.7 1.2l-.5 2.1c-.1.6-.7 1-1.3 1C10.4 17.5 6.5 13.6 6.5 8.1c0-.6.4-1.2 1-1.3z"/>
   </svg>
 </button>
 
-<!-- NAV -->
+
+<!-- =========================
+     NAV
+========================= -->
 
 <nav id="navbar">
-  <a href="#" class="logo">ЕЛЕНА</a>
+
+  <a href="#" class="logo">
+    ЕЛЕНА
+  </a>
 
   <ul class="nav-links">
-    <li><a href="#works">Съёмки</a></li>
-    <li><a href="#directions">Направления</a></li>
-    <li><a href="#inquiry">Связаться</a></li>
+
+    <li>
+      <a href="#works">Съёмки</a>
+    </li>
+
+    <li>
+      <a href="#gallery">Галерея</a>
+    </li>
+
+    <li>
+      <a href="#contact">Связаться</a>
+    </li>
+
   </ul>
 
   <div class="nav-cta">
-    <a href="https://t.me/" class="btn" target="_blank">Telegram</a>
+
+    <a
+      href="https://t.me/"
+      class="btn"
+      target="_blank"
+      rel="noopener"
+    >
+      Telegram
+    </a>
+
   </div>
+
 </nav>
 
-<!-- HERO -->
+
+<!-- =========================
+     HERO
+========================= -->
 
 <section class="hero">
 
@@ -1676,7 +1935,10 @@ nav.scrolled .nav-cta .btn {
       playsinline
       preload="metadata"
     >
-      <source src="./liora-hero.mp4" type="video/mp4">
+      <source
+        src="./liora-hero.mp4"
+        type="video/mp4"
+      >
     </video>
 
     <div class="hero-overlay"></div>
@@ -1686,63 +1948,67 @@ nav.scrolled .nav-cta .btn {
   <div class="hero-content">
 
     <h1>
-      <span class="hero-name">ЕЛЕНА</span>
-      <span class="hero-service">ФОТОГРАФ</span>
+
+      <span class="hero-name">
+        ЕЛЕНА
+      </span>
+
+      <span class="hero-service">
+        ФОТОГРАФ
+      </span>
+
     </h1>
 
-    <p class="hero-motto">Истории в кадре</p>
-
-    <p class="hero-subtitle">
-      love story · свадьбы · портреты · семейные съёмки
+    <p class="hero-motto">
+      Истории в кадре
     </p>
 
     <div class="hero-buttons">
-      <a href="#inquiry" class="btn btn-solid">Обсудить съёмку</a>
-      <a href="#works" class="btn btn-light">Смотреть работы</a>
+
+      <a
+        href="#contact"
+        class="btn btn-solid"
+      >
+        Обсудить съёмку
+      </a>
+
+      <a
+        href="#gallery"
+        class="btn btn-light"
+      >
+        Смотреть работы
+      </a>
+
     </div>
 
   </div>
 
-  <div class="scroll-hint">Листайте</div>
-
-</section>
-
-<!-- INTRO -->
-
-<section class="intro reveal">
-
-  <div>
-    <div class="intro-label">Фотография</div>
-    <h2>Не только кадры.<br>То, что между ними.</h2>
-  </div>
-
-  <div class="intro-copy">
-    <p>
-      Съёмка может быть разной — лёгкой прогулкой, важным днём,
-      встречей всей семьи или временем только для себя.
-    </p>
-
-    <p>
-      Важны не только красивые фотографии, но и ощущение,
-      которое остаётся после съёмки.
-    </p>
+  <div class="scroll-hint">
+    Листайте
   </div>
 
 </section>
 
-<!-- WORKS -->
 
-<div class="section-pad" id="works">
+<!-- =========================
+     WORKS
+========================= -->
 
-  <div class="layout-23">
+<main class="works" id="works">
+
+
+  <!-- LOVE STORY -->
+
+  <section class="work-block reveal">
 
     <div
-      class="big reveal"
+      class="work-photo"
       data-title="Love Story"
-      data-desc="Съёмка для двоих — прогулка, разговоры, движение и естественные моменты. Без необходимости постоянно смотреть в камеру."
       data-tag="Love Story"
+      data-desc="Съёмка для двоих — прогулка, разговоры, движение и естественные моменты. Без необходимости постоянно смотреть в камеру."
       data-img="./images/weddings.webp"
     >
+
       <img
         src="./images/weddings.webp"
         alt="Love Story"
@@ -1750,95 +2016,70 @@ nav.scrolled .nav-cta .btn {
         decoding="async"
       >
 
-      <div class="label">
-        <h3>Love Story</h3>
-        <span>Двое · движение · история</span>
+      <span class="work-open">
+        ↗
+      </span>
+
+    </div>
+
+    <div class="work-copy">
+
+      <div class="work-number">
+        01 / Люди
       </div>
+
+      <h2>
+        Love<br>Story
+      </h2>
+
+      <p>
+        Двое, пространство и время,
+        которое хочется сохранить.
+      </p>
+
+      <div class="work-meta">
+        Движение · близость · настроение
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- WEDDINGS -->
+
+  <section class="work-block reverse reveal">
+
+    <div class="work-copy">
+
+      <div class="work-number">
+        02 / День
+      </div>
+
+      <h2>
+        Свадьбы
+      </h2>
+
+      <p>
+        Не только главные события,
+        но и всё, из чего складывается
+        один важный день.
+      </p>
+
+      <div class="work-meta">
+        Люди · детали · эмоции
+      </div>
+
     </div>
 
     <div
-      class="small reveal reveal-delay-1"
-      data-title="Портрет"
-      data-desc="Портретная съёмка может быть спокойной и естественной или более собранной и выразительной — в студии, городе или на выбранной локации."
-      data-tag="Портреты"
-      data-img="./images/private.webp"
-    >
-      <img
-        src="./images/private.webp"
-        alt="Портретная съёмка"
-        loading="lazy"
-        decoding="async"
-      >
-
-      <div class="label">
-        <h3>Портреты</h3>
-        <span>Для себя · для работы · для истории</span>
-      </div>
-    </div>
-
-  </div>
-
-</div>
-
-<!-- STORY -->
-
-<section class="story reveal">
-
-  <div class="story-copy">
-    <div class="story-number">01 / Люди</div>
-
-    <h2>Фотография<br>про человека</h2>
-
-    <p>
-      Не обязательно уметь позировать. Во время съёмки
-      можно просто двигаться, разговаривать, смотреть,
-      смеяться или молчать.
-    </p>
-
-    <p class="story-note">
-      Естественность · внимание · живые моменты
-    </p>
-  </div>
-
-  <div class="story-number">
-    <span>Кадр, в котором остаётся настроение.</span>
-  </div>
-
-</section>
-
-<!-- SECOND PHOTO STORY -->
-
-<div class="section-pad">
-
-  <div class="layout-23 layout-23-reverse">
-
-    <div
-      class="small reveal"
-      data-title="Семейная съёмка"
-      data-desc="Время вместе без необходимости превращать его в постановочную фотосессию. Дети, родители, движение и маленькие детали обычного дня."
-      data-tag="Семейные съёмки"
-      data-img="./images/atmosphere.webp"
-    >
-      <img
-        src="./images/atmosphere.webp"
-        alt="Семейная съёмка"
-        loading="lazy"
-        decoding="async"
-      >
-
-      <div class="label">
-        <h3>Семья</h3>
-        <span>Вместе · дома · на прогулке</span>
-      </div>
-    </div>
-
-    <div
-      class="big reveal reveal-delay-1"
-      data-title="Свадебный день"
+      class="work-photo"
+      data-title="Свадьбы"
+      data-tag="Свадебная съёмка"
       data-desc="Большой день складывается из множества небольших моментов. Подготовка, встреча, люди, эмоции, детали и то, что происходит между официальными событиями."
-      data-tag="Свадьбы"
       data-img="./images/corporate.webp"
     >
+
       <img
         src="./images/corporate.webp"
         alt="Свадебная съёмка"
@@ -1846,72 +2087,127 @@ nav.scrolled .nav-cta .btn {
         decoding="async"
       >
 
-      <div class="label">
-        <h3>Свадьбы</h3>
-        <span>День целиком · люди · детали</span>
-      </div>
+      <span class="work-open">
+        ↗
+      </span>
+
     </div>
 
-  </div>
+  </section>
 
-</div>
 
-<!-- STORY 02 -->
+  <!-- PORTRAITS -->
 
-<section class="story reverse reveal">
-
-  <div class="story-copy">
-
-    <div class="story-number">02 / История</div>
-
-    <h2>Съёмка,<br>которую можно прожить</h2>
-
-    <p>
-      Не нужно останавливать день ради фотографии.
-      Иногда лучший кадр появляется именно тогда,
-      когда никто его не ждёт.
-    </p>
-
-    <p class="story-note">
-      Свет · движение · пространство · детали
-    </p>
-
-  </div>
-
-  <div class="story-number">
-    <span>Смотреть не только на результат, но и на сам момент.</span>
-  </div>
-
-</section>
-
-<!-- DIRECTIONS -->
-
-<section class="collection-intro reveal" id="directions">
-
-  <div class="eyebrow">Направления</div>
-
-  <h2>Съёмки под разные истории</h2>
-
-  <p>
-    От короткой портретной съёмки до целого свадебного дня —
-    формат выбирается под задачу и людей.
-  </p>
-
-</section>
-
-<!-- TWO DIRECTIONS -->
-
-<div class="section-pad">
-
-  <div class="layout-12">
+  <section class="work-block reveal">
 
     <div
-      class="cell reveal"
+      class="work-photo"
+      data-title="Портреты"
+      data-tag="Портретная съёмка"
+      data-desc="Спокойная или более выразительная портретная съёмка — в городе, студии или на выбранной локации."
+      data-img="./images/private.webp"
+    >
+
+      <img
+        src="./images/private.webp"
+        alt="Портретная съёмка"
+        loading="lazy"
+        decoding="async"
+      >
+
+      <span class="work-open">
+        ↗
+      </span>
+
+    </div>
+
+    <div class="work-copy">
+
+      <div class="work-number">
+        03 / Портрет
+      </div>
+
+      <h2>
+        Портреты
+      </h2>
+
+      <p>
+        Фотографии, в которых остаётся
+        не только внешность, но и характер.
+      </p>
+
+      <div class="work-meta">
+        Свет · взгляд · индивидуальность
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- FAMILY -->
+
+  <section class="work-block reverse reveal">
+
+    <div class="work-copy">
+
+      <div class="work-number">
+        04 / Вместе
+      </div>
+
+      <h2>
+        Семья
+      </h2>
+
+      <p>
+        Дети, родители, движение,
+        объятия и маленькие моменты,
+        которые со временем становятся
+        особенно важными.
+      </p>
+
+      <div class="work-meta">
+        Дома · на прогулке · вместе
+      </div>
+
+    </div>
+
+    <div
+      class="work-photo"
+      data-title="Семейная съёмка"
+      data-tag="Семейная съёмка"
+      data-desc="Время вместе без необходимости превращать его в постановочную фотосессию. Дети, родители, движение и маленькие детали обычного дня."
+      data-img="./images/atmosphere.webp"
+    >
+
+      <img
+        src="./images/atmosphere.webp"
+        alt="Семейная съёмка"
+        loading="lazy"
+        decoding="async"
+      >
+
+      <span class="work-open">
+        ↗
+      </span>
+
+    </div>
+
+  </section>
+
+
+  <!-- LIFESTYLE -->
+
+  <section class="work-block reveal">
+
+    <div
+      class="work-photo"
       data-title="Lifestyle"
-      data-desc="Съёмка в привычном пространстве или в городе. Движение, свет и детали вместо сложной постановки."
       data-tag="Lifestyle"
+      data-desc="Съёмка в привычном пространстве или в городе. Движение, свет и детали вместо сложной постановки."
       data-img="./images/banquets.webp"
     >
+
       <img
         src="./images/banquets.webp"
         alt="Lifestyle"
@@ -1919,325 +2215,313 @@ nav.scrolled .nav-cta .btn {
         decoding="async"
       >
 
-      <div class="label">
-        <h3>Lifestyle</h3>
-        <span>Жизнь без постановки</span>
+      <span class="work-open">
+        ↗
+      </span>
+
+    </div>
+
+    <div class="work-copy">
+
+      <div class="work-number">
+        05 / Жизнь
       </div>
+
+      <h2>
+        Lifestyle
+      </h2>
+
+      <p>
+        Когда фотография становится
+        частью обычного дня,
+        а не отдельным событием.
+      </p>
+
+      <div class="work-meta">
+        Город · дом · движение
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- HISTORY OF DAY -->
+
+  <section class="work-block reverse reveal">
+
+    <div class="work-copy">
+
+      <div class="work-number">
+        06 / История
+      </div>
+
+      <h2>
+        История<br>дня
+      </h2>
+
+      <p>
+        Целый день в фотографиях:
+        встречи, люди, детали,
+        свет и неожиданные моменты.
+      </p>
+
+      <div class="work-meta">
+        Репортаж · атмосфера · детали
+      </div>
+
     </div>
 
     <div
-      class="cell reveal reveal-delay-1"
+      class="work-photo"
       data-title="История дня"
-      data-desc="Когда хочется сохранить не только главные события, но и атмосферу всего дня: людей, встречи, детали, свет и неожиданные моменты."
       data-tag="Репортажная съёмка"
+      data-desc="Когда хочется сохранить не только главные события, но и атмосферу всего дня: людей, встречи, детали, свет и неожиданные моменты."
       data-img="./images/outdoor.webp"
     >
+
       <img
         src="./images/outdoor.webp"
-        alt="Репортажная съёмка"
+        alt="История дня"
         loading="lazy"
         decoding="async"
       >
 
-      <div class="label">
-        <h3>История дня</h3>
-        <span>События · люди · детали</span>
-      </div>
+      <span class="work-open">
+        ↗
+      </span>
+
     </div>
+
+  </section>
+
+</main>
+
+
+<!-- =========================
+     GALLERY
+========================= -->
+
+<section
+  class="gallery"
+  id="gallery"
+>
+
+  <div class="gallery-heading reveal">
+
+    <h2>
+      Избранные кадры
+    </h2>
+
+    <span>
+      Галерея
+    </span>
 
   </div>
 
-</div>
 
-<!-- THREE SMALL -->
+  <div class="gallery-grid">
 
-<div class="section-pad">
-
-  <div class="layout-33">
 
     <div
-      class="cell reveal"
-      data-title="Индивидуальная съёмка"
-      data-desc="Время для себя и фотографии, которые отражают именно ваше настроение и характер."
-      data-tag="Портрет"
-      data-img="./images/kids.webp"
-    >
-      <img
-        src="./images/kids.webp"
-        alt="Индивидуальная съёмка"
-        loading="lazy"
-        decoding="async"
-      >
-
-      <div class="label">
-        <h3>Для себя</h3>
-        <span>Портрет · настроение</span>
-      </div>
-    </div>
-
-    <div
-      class="cell reveal reveal-delay-1"
-      data-title="Детали"
-      data-desc="Иногда история начинается с небольшого фрагмента: рук, ткани, света, букета, пространства или случайного взгляда."
-      data-tag="Детали"
-      data-img="./images/banquet.webp"
-    >
-      <img
-        src="./images/banquet.webp"
-        alt="Детали"
-        loading="lazy"
-        decoding="async"
-      >
-
-      <div class="label">
-        <h3>Детали</h3>
-        <span>Свет · фактуры · настроение</span>
-      </div>
-    </div>
-
-    <div
-      class="cell reveal reveal-delay-2"
-      data-title="На прогулке"
-      data-desc="Город, природа или место, которое имеет значение. Пространство становится частью истории."
-      data-tag="Lifestyle"
-      data-img="./images/details.webp"
-    >
-      <img
-        src="./images/details.webp"
-        alt="Съёмка на прогулке"
-        loading="lazy"
-        decoding="async"
-      >
-
-      <div class="label">
-        <h3>На прогулке</h3>
-        <span>Место · движение · свет</span>
-      </div>
-    </div>
-
-  </div>
-
-</div>
-
-<!-- GALLERY INTRO -->
-
-<section class="collection-intro reveal">
-
-  <div class="eyebrow">Избранные кадры</div>
-
-  <h2>То, что остаётся<br>в памяти</h2>
-
-  <p>
-    Несколько историй, собранных в одну визуальную ленту.
-  </p>
-
-</section>
-
-<!-- GALLERY -->
-
-<div class="section-pad">
-
-  <div class="layout-23">
-
-    <div
-      class="big reveal"
-      data-title="История"
-      data-desc="Свет, движение и человек в одном кадре."
-      data-tag="Избранное"
-      data-img="./images/weddings.webp"
+      class="gallery-item reveal"
+      data-gallery-index="0"
     >
       <img
         src="./images/weddings.webp"
-        alt="Избранный кадр"
+        alt="Фотография"
         loading="lazy"
         decoding="async"
       >
-
-      <div class="label">
-        <h3>История</h3>
-        <span>Открыть кадр</span>
-      </div>
     </div>
 
+
     <div
-      class="small reveal reveal-delay-1"
-      data-title="Момент"
-      data-desc="То, что происходит между запланированными кадрами."
-      data-tag="Избранное"
-      data-img="./images/private.webp"
+      class="gallery-item reveal reveal-delay-1"
+      data-gallery-index="1"
     >
       <img
         src="./images/private.webp"
-        alt="Избранный кадр"
+        alt="Фотография"
         loading="lazy"
         decoding="async"
       >
-
-      <div class="label">
-        <h3>Момент</h3>
-        <span>Открыть кадр</span>
-      </div>
     </div>
 
-  </div>
 
-</div>
-
-<!-- CONTACT -->
-
-<section class="inquiry reveal" id="inquiry">
-
-  <div class="inquiry-bg">
-    <img
-      src="https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1400&auto=format&fit=crop"
-      alt=""
-      loading="lazy"
-      decoding="async"
+    <div
+      class="gallery-item reveal"
+      data-gallery-index="2"
     >
-  </div>
-
-  <div class="inquiry-veil"></div>
-
-  <div class="inquiry-inner">
-
-    <div class="inquiry-text">
-
-      <span class="inquiry-label">Связаться</span>
-
-      <h2>Расскажите<br>о своей съёмке</h2>
-
-      <p>
-        Дата, формат, место или просто идея —
-        расскажите, что вы хотите сохранить.
-      </p>
-
-    </div>
-
-    <form
-      class="inquiry-form"
-      onsubmit="event.preventDefault(); this.classList.add('sent');"
-    >
-
-      <div class="field">
-
-        <label>Формат съёмки</label>
-
-        <select required>
-          <option value="" disabled selected>Выберите</option>
-          <option>Love Story</option>
-          <option>Свадьба</option>
-          <option>Портрет</option>
-          <option>Семейная съёмка</option>
-          <option>Lifestyle</option>
-          <option>Другое</option>
-        </select>
-
-      </div>
-
-      <div class="field">
-
-        <label>Примерная дата</label>
-
-        <input type="date" required>
-
-      </div>
-
-      <div class="field">
-
-        <label>Имя</label>
-
-        <input
-          type="text"
-          placeholder="Как к вам обращаться"
-          required
-        >
-
-      </div>
-
-      <div class="field">
-
-        <label>Телефон или Telegram</label>
-
-        <input
-          type="text"
-          placeholder="+7 или @username"
-          required
-        >
-
-      </div>
-
-      <button
-        type="submit"
-        class="btn btn-solid inquiry-submit"
+      <img
+        src="./images/atmosphere.webp"
+        alt="Фотография"
+        loading="lazy"
+        decoding="async"
       >
-        Обсудить съёмку
-      </button>
+    </div>
 
-      <p class="inquiry-note">Или напишите сразу</p>
 
-      <div class="inquiry-messengers">
+    <div
+      class="gallery-item reveal reveal-delay-1"
+      data-gallery-index="3"
+    >
+      <img
+        src="./images/corporate.webp"
+        alt="Фотография"
+        loading="lazy"
+        decoding="async"
+      >
+    </div>
 
-        <a
-          href="https://t.me/"
-          class="btn btn-outline"
-          target="_blank"
-        >
-          Telegram
-        </a>
 
-        <a
-          href="https://vk.com/"
-          class="btn btn-outline"
-          target="_blank"
-        >
-          ВКонтакте
-        </a>
+    <div
+      class="gallery-item reveal"
+      data-gallery-index="4"
+    >
+      <img
+        src="./images/banquets.webp"
+        alt="Фотография"
+        loading="lazy"
+        decoding="async"
+      >
+    </div>
 
-        <a
-          href="https://www.avito.ru/"
-          class="btn btn-outline"
-          target="_blank"
-        >
-          Авито
-        </a>
 
-      </div>
+    <div
+      class="gallery-item reveal reveal-delay-1"
+      data-gallery-index="5"
+    >
+      <img
+        src="./images/outdoor.webp"
+        alt="Фотография"
+        loading="lazy"
+        decoding="async"
+      >
+    </div>
 
-      <p class="inquiry-success">
-        Спасибо! Свяжемся с вами в ближайшее время.
-      </p>
 
-    </form>
+    <div
+      class="gallery-item reveal"
+      data-gallery-index="6"
+    >
+      <img
+        src="./images/kids.webp"
+        alt="Фотография"
+        loading="lazy"
+        decoding="async"
+      >
+    </div>
+
+
+    <div
+      class="gallery-item reveal reveal-delay-1"
+      data-gallery-index="7"
+    >
+      <img
+        src="./images/banquet.webp"
+        alt="Фотография"
+        loading="lazy"
+        decoding="async"
+      >
+    </div>
+
+
+    <div
+      class="gallery-item reveal reveal-delay-2"
+      data-gallery-index="8"
+    >
+      <img
+        src="./images/details.webp"
+        alt="Фотография"
+        loading="lazy"
+        decoding="async"
+      >
+    </div>
 
   </div>
 
 </section>
 
-<!-- MOBILE FOOTER TOP -->
+
+<!-- =========================
+     CONTACT
+========================= -->
+
+<section
+  class="contact reveal"
+  id="contact"
+>
+
+  <div class="contact-label">
+    Связаться
+  </div>
+
+  <h2>
+    Обсудить<br>съёмку
+  </h2>
+
+  <p>
+    Расскажите о дате, формате или просто
+    о том, какую историю хотите сохранить.
+  </p>
+
+  <a
+    href="https://t.me/"
+    class="btn btn-solid"
+    target="_blank"
+    rel="noopener"
+  >
+    Написать в Telegram
+  </a>
+
+</section>
+
+
+<!-- =========================
+     MOBILE FOOTER
+========================= -->
 
 <div class="footer-mobile-top">
 
   <div class="footer-mobile-title">
+
     <span>ЕЛЕНА</span>
     <span>ФОТОГРАФ</span>
     <span>ИСТОРИИ В КАДРЕ</span>
+
   </div>
 
   <div class="footer-mobile-actions">
 
-    <a href="https://t.me/" target="_blank">
+    <a
+      href="https://t.me/"
+      target="_blank"
+      rel="noopener"
+    >
       Telegram
     </a>
 
-    <a href="https://vk.com/" target="_blank">
+    <a
+      href="https://vk.com/"
+      target="_blank"
+      rel="noopener"
+    >
       ВКонтакте
     </a>
 
-    <a href="https://www.avito.ru/" target="_blank">
+    <a
+      href="https://www.avito.ru/"
+      target="_blank"
+      rel="noopener"
+    >
       Авито
     </a>
 
-    <a href="#inquiry" class="footer-action-main">
+    <a
+      href="#contact"
+      class="footer-action-main"
+    >
       Обсудить съёмку
     </a>
 
@@ -2245,19 +2529,24 @@ nav.scrolled .nav-cta .btn {
 
 </div>
 
-<!-- FOOTER -->
+
+<!-- =========================
+     FOOTER
+========================= -->
 
 <footer class="liora-footer">
 
-  <div class="footer-trigger"></div>
-
   <div class="footer-stage">
 
+
     <div class="footer-title">
+
       <span>ЕЛЕНА</span>
       <span>ФОТОГРАФ</span>
       <span>ИСТОРИИ В КАДРЕ</span>
+
     </div>
+
 
     <div class="footer-figure">
 
@@ -2270,21 +2559,37 @@ nav.scrolled .nav-cta .btn {
 
     </div>
 
+
     <div class="footer-actions">
 
-      <a href="https://t.me/" target="_blank">
+      <a
+        href="https://t.me/"
+        target="_blank"
+        rel="noopener"
+      >
         Telegram
       </a>
 
-      <a href="https://vk.com/" target="_blank">
+      <a
+        href="https://vk.com/"
+        target="_blank"
+        rel="noopener"
+      >
         ВКонтакте
       </a>
 
-      <a href="https://www.avito.ru/" target="_blank">
+      <a
+        href="https://www.avito.ru/"
+        target="_blank"
+        rel="noopener"
+      >
         Авито
       </a>
 
-      <a href="#inquiry" class="footer-action-main">
+      <a
+        href="#contact"
+        class="footer-action-main"
+      >
         Обсудить съёмку
       </a>
 
@@ -2292,28 +2597,42 @@ nav.scrolled .nav-cta .btn {
 
   </div>
 
+
   <div class="footer-bottom">
 
-    <span>© 2026 ЕЛЕНА</span>
-    <span>Фотография</span>
+    <span>
+      © 2026 ЕЛЕНА
+    </span>
+
+    <span>
+      Фотография
+    </span>
 
   </div>
 
 </footer>
 
-<!-- MODAL -->
 
-<div class="modal-backdrop" id="modal">
+<!-- =========================
+     SERVICE MODAL
+========================= -->
+
+<div
+  class="modal-backdrop"
+  id="modal"
+>
 
   <div class="modal-card">
 
     <button
       class="modal-close"
       id="modalClose"
+      type="button"
       aria-label="Закрыть"
     >
       ×
     </button>
+
 
     <div class="modal-photo">
 
@@ -2321,35 +2640,17 @@ nav.scrolled .nav-cta .btn {
         id="modalImg"
         src=""
         alt=""
-        loading="lazy"
-        decoding="async"
       >
-
-      <div class="modal-nav">
-
-        <button
-          type="button"
-          id="modalPrev"
-          aria-label="Предыдущая фотография"
-        >
-          ←
-        </button>
-
-        <button
-          type="button"
-          id="modalNext"
-          aria-label="Следующая фотография"
-        >
-          →
-        </button>
-
-      </div>
 
     </div>
 
+
     <div class="modal-info">
 
-      <span class="tag" id="modalTag"></span>
+      <span
+        class="tag"
+        id="modalTag"
+      ></span>
 
       <h3 id="modalTitle"></h3>
 
@@ -2359,6 +2660,7 @@ nav.scrolled .nav-cta .btn {
         href="https://t.me/"
         class="btn btn-solid"
         target="_blank"
+        rel="noopener"
         style="align-self:flex-start;"
       >
         Обсудить съёмку
@@ -2370,22 +2672,76 @@ nav.scrolled .nav-cta .btn {
 
 </div>
 
+
+<!-- =========================
+     GALLERY LIGHTBOX
+========================= -->
+
+<div
+  class="gallery-lightbox"
+  id="galleryLightbox"
+>
+
+  <button
+    class="gallery-close"
+    id="galleryClose"
+    type="button"
+    aria-label="Закрыть"
+  >
+    ×
+  </button>
+
+
+  <button
+    class="gallery-arrow gallery-prev"
+    id="galleryPrev"
+    type="button"
+    aria-label="Предыдущая фотография"
+  >
+    ←
+  </button>
+
+
+  <img
+    id="galleryLightboxImg"
+    src=""
+    alt=""
+  >
+
+
+  <button
+    class="gallery-arrow gallery-next"
+    id="galleryNext"
+    type="button"
+    aria-label="Следующая фотография"
+  >
+    →
+  </button>
+
+</div>
+
+
 <script>
 
 /* =========================
    NAVBAR
 ========================= */
 
-const navbar = document.getElementById('navbar');
+const navbar =
+  document.getElementById('navbar');
 
-window.addEventListener('scroll', () => {
+window.addEventListener(
+  'scroll',
+  () => {
 
-  navbar.classList.toggle(
-    'scrolled',
-    window.scrollY > 40
-  );
+    navbar.classList.toggle(
+      'scrolled',
+      window.scrollY > 40
+    );
 
-}, { passive:true });
+  },
+  { passive:true }
+);
 
 
 /* =========================
@@ -2400,14 +2756,28 @@ function startHeroVideo() {
   if (!heroVideo) return;
 
   heroVideo.muted = true;
-  heroVideo.setAttribute('muted','');
+
+  heroVideo.setAttribute(
+    'muted',
+    ''
+  );
+
   heroVideo.playsInline = true;
-  heroVideo.setAttribute('playsinline','');
 
-  const playPromise = heroVideo.play();
+  heroVideo.setAttribute(
+    'playsinline',
+    ''
+  );
 
-  if (playPromise !== undefined) {
+  const playPromise =
+    heroVideo.play();
+
+  if (
+    playPromise !== undefined
+  ) {
+
     playPromise.catch(() => {});
+
   }
 
 }
@@ -2445,34 +2815,56 @@ const observer =
   new IntersectionObserver(
     (entries) => {
 
-      entries.forEach((entry) => {
+      entries.forEach(
+        (entry) => {
 
-        if (!entry.isIntersecting) return;
+          if (
+            !entry.isIntersecting
+          ) {
+            return;
+          }
 
-        const el = entry.target;
+          const el =
+            entry.target;
 
-        const delay =
-          el.classList.contains('reveal-delay-1')
-            ? 80
-            : el.classList.contains('reveal-delay-2')
-              ? 160
-              : el.classList.contains('reveal-delay-3')
-                ? 240
-                : 0;
+          const delay =
+            el.classList.contains(
+              'reveal-delay-1'
+            )
+              ? 80
+              : el.classList.contains(
+                  'reveal-delay-2'
+                )
+                  ? 160
+                  : el.classList.contains(
+                      'reveal-delay-3'
+                    )
+                      ? 240
+                      : 0;
 
-        setTimeout(() => {
+          setTimeout(
+            () => {
 
-          el.classList.add('visible');
+              el.classList.add(
+                'visible'
+              );
 
-          setTimeout(() => {
-            el.style.willChange = 'auto';
-          }, 1200);
+              setTimeout(
+                () => {
+                  el.style.willChange =
+                    'auto';
+                },
+                1200
+              );
 
-        }, delay);
+            },
+            delay
+          );
 
-        observer.unobserve(el);
+          observer.unobserve(el);
 
-      });
+        }
+      );
 
     },
     {
@@ -2481,13 +2873,13 @@ const observer =
     }
   );
 
-reveals.forEach(el =>
-  observer.observe(el)
+reveals.forEach(
+  el => observer.observe(el)
 );
 
 
 /* =========================
-   MODAL
+   SERVICE MODAL
 ========================= */
 
 const modal =
@@ -2497,100 +2889,82 @@ const modalImg =
   document.getElementById('modalImg');
 
 const modalTitle =
-  document.getElementById('modalTitle');
-
-const modalDesc =
-  document.getElementById('modalDesc');
-
-const modalTag =
-  document.getElementById('modalTag');
-
-const modalClose =
-  document.getElementById('modalClose');
-
-const modalPrev =
-  document.getElementById('modalPrev');
-
-const modalNext =
-  document.getElementById('modalNext');
-
-const modalItems =
-  Array.from(
-    document.querySelectorAll('[data-title]')
+  document.getElementById(
+    'modalTitle'
   );
 
-let currentModalIndex = 0;
+const modalDesc =
+  document.getElementById(
+    'modalDesc'
+  );
+
+const modalTag =
+  document.getElementById(
+    'modalTag'
+  );
+
+const modalClose =
+  document.getElementById(
+    'modalClose'
+  );
+
+const workPhotos =
+  Array.from(
+    document.querySelectorAll(
+      '.work-photo'
+    )
+  );
 
 
-/* Open modal */
+function openModal(el) {
 
-function openModal(index) {
+  if (!el) return;
 
-  if (!modalItems.length) return;
+  modalImg.src =
+    el.dataset.img || '';
 
-  currentModalIndex =
-    (index + modalItems.length)
-    % modalItems.length;
+  modalImg.alt =
+    el.dataset.title || '';
 
-  const el =
-    modalItems[currentModalIndex];
+  modalTitle.textContent =
+    el.dataset.title || '';
 
-  modalImg.src = el.dataset.img;
-  modalTitle.textContent = el.dataset.title;
-  modalDesc.textContent = el.dataset.desc;
-  modalTag.textContent = el.dataset.tag;
+  modalDesc.textContent =
+    el.dataset.desc || '';
 
-  modal.classList.add('open');
+  modalTag.textContent =
+    el.dataset.tag || '';
 
-  document.body.style.overflow = 'hidden';
+  modal.classList.add(
+    'open'
+  );
+
+  document.body.style.overflow =
+    'hidden';
 
 }
 
 
-/* All clickable cards */
+workPhotos.forEach(
+  (el) => {
 
-modalItems.forEach((el,index) => {
+    el.addEventListener(
+      'click',
+      () => openModal(el)
+    );
 
-  el.addEventListener('click', () => {
-    openModal(index);
-  });
+  }
+);
 
-});
-
-
-/* Previous */
-
-modalPrev.addEventListener('click', (e) => {
-
-  e.stopPropagation();
-
-  openModal(
-    currentModalIndex - 1
-  );
-
-});
-
-
-/* Next */
-
-modalNext.addEventListener('click', (e) => {
-
-  e.stopPropagation();
-
-  openModal(
-    currentModalIndex + 1
-  );
-
-});
-
-
-/* Close */
 
 function closeModal() {
 
-  modal.classList.remove('open');
+  modal.classList.remove(
+    'open'
+  );
 
-  document.body.style.overflow = '';
+  document.body.style.overflow =
+    '';
 
 }
 
@@ -2601,9 +2975,11 @@ modalClose.addEventListener(
 
 modal.addEventListener(
   'click',
-  (e) => {
+  (event) => {
 
-    if (e.target === modal) {
+    if (
+      event.target === modal
+    ) {
       closeModal();
     }
 
@@ -2611,26 +2987,209 @@ modal.addEventListener(
 );
 
 
-/* Keyboard */
+/* =========================
+   GALLERY LIGHTBOX
+========================= */
+
+const galleryLightbox =
+  document.getElementById(
+    'galleryLightbox'
+  );
+
+const galleryLightboxImg =
+  document.getElementById(
+    'galleryLightboxImg'
+  );
+
+const galleryClose =
+  document.getElementById(
+    'galleryClose'
+  );
+
+const galleryPrev =
+  document.getElementById(
+    'galleryPrev'
+  );
+
+const galleryNext =
+  document.getElementById(
+    'galleryNext'
+  );
+
+const galleryItems =
+  Array.from(
+    document.querySelectorAll(
+      '.gallery-item'
+    )
+  );
+
+const galleryImages =
+  galleryItems.map(
+    item =>
+      item.querySelector('img')
+        .src
+  );
+
+let currentGalleryIndex = 0;
+
+
+function openGallery(index) {
+
+  if (
+    !galleryImages.length
+  ) {
+    return;
+  }
+
+  currentGalleryIndex =
+    (
+      index +
+      galleryImages.length
+    ) %
+    galleryImages.length;
+
+  galleryLightboxImg.src =
+    galleryImages[
+      currentGalleryIndex
+    ];
+
+  galleryLightbox.classList.add(
+    'open'
+  );
+
+  document.body.style.overflow =
+    'hidden';
+
+}
+
+
+galleryItems.forEach(
+  (item,index) => {
+
+    item.addEventListener(
+      'click',
+      () => openGallery(index)
+    );
+
+  }
+);
+
+
+function closeGallery() {
+
+  galleryLightbox.classList.remove(
+    'open'
+  );
+
+  document.body.style.overflow =
+    '';
+
+}
+
+
+function galleryMove(direction) {
+
+  openGallery(
+    currentGalleryIndex +
+    direction
+  );
+
+}
+
+
+galleryClose.addEventListener(
+  'click',
+  closeGallery
+);
+
+galleryPrev.addEventListener(
+  'click',
+  (event) => {
+
+    event.stopPropagation();
+
+    galleryMove(-1);
+
+  }
+);
+
+galleryNext.addEventListener(
+  'click',
+  (event) => {
+
+    event.stopPropagation();
+
+    galleryMove(1);
+
+  }
+);
+
+galleryLightbox.addEventListener(
+  'click',
+  (event) => {
+
+    if (
+      event.target ===
+      galleryLightbox
+    ) {
+      closeGallery();
+    }
+
+  }
+);
+
+
+/* =========================
+   KEYBOARD
+========================= */
 
 document.addEventListener(
   'keydown',
-  (e) => {
+  (event) => {
 
-    if (!modal.classList.contains('open')) {
+    if (
+      modal.classList.contains(
+        'open'
+      )
+    ) {
+
+      if (
+        event.key === 'Escape'
+      ) {
+        closeModal();
+      }
+
       return;
     }
 
-    if (e.key === 'Escape') {
-      closeModal();
+
+    if (
+      !galleryLightbox.classList.contains(
+        'open'
+      )
+    ) {
+      return;
     }
 
-    if (e.key === 'ArrowLeft') {
-      openModal(currentModalIndex - 1);
+
+    if (
+      event.key === 'Escape'
+    ) {
+      closeGallery();
     }
 
-    if (e.key === 'ArrowRight') {
-      openModal(currentModalIndex + 1);
+
+    if (
+      event.key === 'ArrowLeft'
+    ) {
+      galleryMove(-1);
+    }
+
+
+    if (
+      event.key === 'ArrowRight'
+    ) {
+      galleryMove(1);
     }
 
   }
@@ -2642,13 +3201,18 @@ document.addEventListener(
 ========================= */
 
 const heroInner =
-  document.querySelector('.hero-inner');
+  document.querySelector(
+    '.hero-inner'
+  );
 
 let parallaxTicking = false;
 
+
 function onScrollParallax() {
 
-  if (!heroInner) return;
+  if (!heroInner) {
+    return;
+  }
 
   if (
     window.scrollY <
@@ -2667,11 +3231,14 @@ function onScrollParallax() {
 
 }
 
+
 window.addEventListener(
   'scroll',
   () => {
 
-    if (!parallaxTicking) {
+    if (
+      !parallaxTicking
+    ) {
 
       parallaxTicking = true;
 
@@ -2695,11 +3262,25 @@ const floatingPhone =
     'floatingPhone'
   );
 
+
+floatingPhone.addEventListener(
+  'click',
+  () => {
+
+    window.location.href =
+      'tel:+70000000000';
+
+  }
+);
+
+
 window.addEventListener(
   'scroll',
   () => {
 
-    if (window.scrollY > 120) {
+    if (
+      window.scrollY > 120
+    ) {
 
       floatingPhone.classList.add(
         'visible'
