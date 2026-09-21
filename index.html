@@ -175,12 +175,14 @@
     }
 
     .nav-links {
-      display: flex;
-      align-items: center;
-      gap: 30px;
-      margin-left: auto;
-      margin-right: 28px;
-    }
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+
+  display: flex;
+  align-items: center;
+  gap: 30px;
+}
 
     .nav-links a {
       position: relative;
@@ -1491,13 +1493,15 @@
 
       <div class="hero-content">
 
-        <div class="hero-service">
-          ФОТОГРАФ
-        </div>
+        <div class="hero-heading">
+  <div class="hero-service">
+    ФОТОГРАФ
+  </div>
 
-        <h1 class="hero-title">
-        ИСТОРИИ В КАДРЕ
-         </h1>
+  <h1 class="hero-title">
+    ИСТОРИИ В КАДРЕ
+  </h1>
+</div>
 
         <div class="hero-bottom">
 
