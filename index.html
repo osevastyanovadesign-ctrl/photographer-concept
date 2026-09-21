@@ -822,22 +822,22 @@
     }
 
     .service-modal-inner {
-      position: relative;
+  position: relative;
 
-      width: min(100%, 980px);
-      max-height: min(88vh, 780px);
+  width: min(100%, 1180px);
+  max-height: min(88vh, 780px);
 
-      display: grid;
-      grid-template-columns: 1.2fr 0.8fr;
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
 
-      overflow: hidden;
-      border-radius: var(--radius);
+  overflow: hidden;
+  border-radius: var(--radius);
 
-      background: var(--bg-block);
+  background: var(--bg-block);
 
-      transform: translateY(24px) scale(0.98);
-      transition: transform 0.45s cubic-bezier(.22,.61,.36,1);
-    }
+  transform: translateY(24px) scale(0.98);
+  transition: transform 0.45s cubic-bezier(.22,.61,.36,1);
+}
 
     .service-modal.open .service-modal-inner {
       transform: translateY(0) scale(1);
