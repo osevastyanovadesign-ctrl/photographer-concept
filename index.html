@@ -762,43 +762,47 @@
   margin-top: 0;
 }
     @media (min-width: 901px) {
+
   .contact-content {
     display: grid;
-    grid-template-columns: minmax(280px, 0.8fr) minmax(0, 1.2fr);
-    column-gap: clamp(50px, 7vw, 110px);
+    grid-template-columns: minmax(360px, 1fr) minmax(360px, 1fr);
+    gap: clamp(50px, 6vw, 90px);
+
     align-items: start;
-    max-width: 100%;
+
+    max-width: 900px;
+  }
+
+  .contact-info {
+    grid-column: 1;
+  }
+
+  .contact-form {
+    grid-column: 2;
+
+    width: 100%;
+    max-width: 420px;
+    margin-top: 0;
   }
 
   .contact-title {
-    grid-column: 1;
-    grid-row: 1;
+    font-size: clamp(3.8rem, 5.5vw, 6.4rem);
+    line-height: 0.84;
   }
 
   .contact-text {
-    grid-column: 1;
-    grid-row: 2;
+    max-width: 330px;
+    margin-top: 28px;
 
-    max-width: 360px;
     font-family: "IBM Plex Mono", monospace;
     font-size: 12px;
     line-height: 1.7;
   }
 
-  .contact-form {
-    grid-column: 2;
-    grid-row: 1 / span 4;
-
-    width: 100%;
-    max-width: none;
-    margin-top: 0;
-  }
-
   .contact-direct {
-    grid-column: 2;
-    grid-row: 5;
-    margin-top: 48px;
+    margin-top: 42px;
   }
+
 }
 
     /* =========================
@@ -2103,116 +2107,129 @@
 
 
     <!-- =========================
-         CONTACT
-    ========================== -->
+     CONTACT
+========================== -->
 
-    <section class="contact reveal" id="contact">
+<section class="contact reveal" id="contact">
 
-      <div class="contact-inner">
+  <div class="contact-inner">
 
-        <div class="contact-label">
-          Связаться
-        </div>
+    <div class="contact-label">
+      Связаться
+    </div>
 
-        <div class="contact-content">
+    <div class="contact-content">
 
-          <h2 class="contact-title">
-            Обсудить<br>
-            съёмку
-          </h2>
+      <div class="contact-info">
 
-          <p class="contact-text">
-            Расскажите, что вы хотите сохранить в кадре.
-            Обсудим формат съёмки, дату и детали.
-          </p>
+        <h2 class="contact-title">
+          Обсудить<br>
+          съёмку
+        </h2>
 
-          <form class="contact-form" id="contactForm">
+        <p class="contact-text">
+          Расскажите, что вы хотите сохранить в кадре.
+          Обсудим формат съёмки, дату и детали.
+        </p>
 
-  <div class="contact-form-field">
-    <label for="contactName">Имя</label>
-    <input
-      type="text"
-      id="contactName"
-      name="name"
-      placeholder="Ваше имя"
-      required
-    />
-  </div>
+        <div class="contact-direct">
 
-  <div class="contact-form-field">
-    <label for="contactType">Что снимаем?</label>
-    <input
-      type="text"
-      id="contactType"
-      name="type"
-      placeholder="Например, свадьбу или портрет"
-    />
-  </div>
+          <div class="contact-direct-label">
+            Или написать напрямую
+          </div>
 
-  <div class="contact-form-field">
-    <label for="contactDate">Дата съёмки</label>
-    <input
-      type="text"
-      id="contactDate"
-      name="date"
-      placeholder="Например, 15 июня"
-    />
-  </div>
+          <div class="contact-direct-buttons">
 
-  <div class="contact-form-field">
-    <label for="contactMessage">О съёмке</label>
-    <textarea
-      id="contactMessage"
-      name="message"
-      rows="4"
-      placeholder="Расскажите немного о съёмке"
-      required
-    ></textarea>
-  </div>
+            <a href="#" class="button">
+              Авито
+            </a>
 
-  <button
-    type="submit"
-    class="button button-light"
-  >
-    Отправить заявку
-  </button>
+            <a href="#" class="button">
+              VK
+            </a>
 
-</form>
+            <a
+              href="https://t.me/"
+              target="_blank"
+              rel="noopener noreferrer"
+              class="button"
+            >
+              Telegram
+            </a>
 
-<div class="contact-direct">
-
-  <div class="contact-direct-label">
-    Или написать напрямую
-  </div>
-
-  <div class="contact-direct-buttons">
-
-    <a href="#" class="button">
-      Авито
-    </a>
-
-    <a href="#" class="button">
-      VK
-    </a>
-
-    <a
-      href="https://t.me/"
-      target="_blank"
-      rel="noopener noreferrer"
-      class="button"
-    >
-      Telegram
-    </a>
-
-  </div>
-
-</div>
+          </div>
 
         </div>
 
       </div>
 
-    </section>
+
+      <form class="contact-form" id="contactForm">
+
+        <div class="contact-form-field">
+          <label for="contactName">Имя</label>
+
+          <input
+            type="text"
+            id="contactName"
+            name="name"
+            placeholder="Ваше имя"
+            required
+          />
+        </div>
+
+
+        <div class="contact-form-field">
+          <label for="contactType">Что снимаем?</label>
+
+          <input
+            type="text"
+            id="contactType"
+            name="type"
+            placeholder="Например, свадьбу или портрет"
+          />
+        </div>
+
+
+        <div class="contact-form-field">
+          <label for="contactDate">Дата съёмки</label>
+
+          <input
+            type="text"
+            id="contactDate"
+            name="date"
+            placeholder="Например, 15 июня"
+          />
+        </div>
+
+
+        <div class="contact-form-field">
+          <label for="contactMessage">О съёмке</label>
+
+          <textarea
+            id="contactMessage"
+            name="message"
+            rows="4"
+            placeholder="Расскажите немного о съёмке"
+            required
+          ></textarea>
+        </div>
+
+
+        <button
+          type="submit"
+          class="button button-light"
+        >
+          Отправить заявку
+        </button>
+
+      </form>
+
+    </div>
+
+  </div>
+
+</section>
 
   </main>
 
