@@ -761,6 +761,45 @@
 .contact-direct-buttons .button {
   margin-top: 0;
 }
+    @media (min-width: 901px) {
+  .contact-content {
+    display: grid;
+    grid-template-columns: minmax(280px, 0.8fr) minmax(0, 1.2fr);
+    column-gap: clamp(50px, 7vw, 110px);
+    align-items: start;
+    max-width: 100%;
+  }
+
+  .contact-title {
+    grid-column: 1;
+    grid-row: 1;
+  }
+
+  .contact-text {
+    grid-column: 1;
+    grid-row: 2;
+
+    max-width: 360px;
+    font-family: "IBM Plex Mono", monospace;
+    font-size: 12px;
+    line-height: 1.7;
+  }
+
+  .contact-form {
+    grid-column: 2;
+    grid-row: 1 / span 4;
+
+    width: 100%;
+    max-width: none;
+    margin-top: 0;
+  }
+
+  .contact-direct {
+    grid-column: 2;
+    grid-row: 5;
+    margin-top: 48px;
+  }
+}
 
     /* =========================
        FOOTER
@@ -1189,9 +1228,13 @@
       }
 
       .work-block.reverse .work-info,
-      .work-block.reverse .work-photo-wrap {
-        order: initial;
-      }
+.work-block.reverse .work-photo-wrap {
+  order: initial;
+}
+
+.work-block.reverse .work-info {
+  left: 0;
+}
 
       .work-info {
         max-width: 600px;
