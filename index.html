@@ -835,31 +835,30 @@
     }
 
     .footer-title {
-      margin-top: 35px;
-      max-width: 720px;
+  margin-top: 35px;
+  max-width: 720px;
 
-      font-family: "Outfit", sans-serif;
-      font-weight: 400;
-      font-size: clamp(5rem, 11vw, 12rem);
-      line-height: 0.76;
-      font-weight: 400;
-      letter-spacing: -0.06em;
-    }
-
-    .footer-title em {
-      font-style: italic;
-    }
+  font-family: "Outfit", sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: clamp(5rem, 11vw, 12rem);
+  line-height: 0.76;
+  letter-spacing: -0.06em;
+}
+  .footer-title em {
+  font-style: normal;
+}
 
     .footer-figure {
-      position: absolute;
-      z-index: 1;
-      left: 50%;
-      bottom: 0;
-      width: min(40vw, 520px);
-      height: 74%;
-      transform: translateX(-50%);
-      pointer-events: none;
-    }
+  position: absolute;
+  z-index: 1;
+  left: 50%;
+  bottom: 0;
+  width: min(48vw, 620px);
+  height: 82%;
+  transform: translateX(-50%);
+  pointer-events: none;
+}
 
     .footer-figure img {
       width: 100%;
@@ -869,18 +868,17 @@
     }
 
     .footer-actions {
-      position: absolute;
-      z-index: 3;
-      top: 50%;
-      right: 3.5%;
-      transform: translateY(-50%);
+  position: absolute;
+  z-index: 3;
+  top: 50%;
+  right: clamp(11%, 13vw, 190px);
+  transform: translateY(-50%);
 
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
-      align-items: flex-end;
-    }
-
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: flex-end;
+}
     .footer-action {
       display: inline-flex;
       align-items: center;
@@ -1490,8 +1488,8 @@
       }
 
       .footer-mobile-title em {
-        font-style: italic;
-      }
+  font-style: normal;
+}
 
       .footer-mobile-image {
         margin-top: 45px;
@@ -2268,17 +2266,17 @@
 
     <div class="footer-actions">
 
-      <a href="#works" class="footer-action">
-        Съёмки
-      </a>
+      <a href="#" class="footer-action">
+  Авито
+</a>
 
-      <a href="#gallery" class="footer-action">
-        Галерея
-      </a>
+<a href="#" class="footer-action">
+  VK
+</a>
 
-      <a href="#contact" class="footer-action">
-        Связаться
-      </a>
+<a href="https://t.me/" target="_blank" rel="noopener noreferrer" class="footer-action">
+  Telegram
+</a>
 
     </div>
 
@@ -2323,20 +2321,24 @@
 
     <div class="footer-mobile-actions">
 
-      <a href="#works" class="footer-mobile-action">
-        <span>Съёмки</span>
-        <span>↗</span>
-      </a>
+      <div class="footer-mobile-actions">
 
-      <a href="#gallery" class="footer-mobile-action">
-        <span>Галерея</span>
-        <span>↗</span>
-      </a>
+  <a href="#works" class="footer-mobile-action">
+    <span>Съёмки</span>
+    <span>↗</span>
+  </a>
 
-      <a href="#contact" class="footer-mobile-action">
-        <span>Связаться</span>
-        <span>↗</span>
-      </a>
+  <a href="#gallery" class="footer-mobile-action">
+    <span>Галерея</span>
+    <span>↗</span>
+  </a>
+
+  <a href="#contact" class="footer-mobile-action">
+    <span>Связаться</span>
+    <span>↗</span>
+  </a>
+
+</div>
 
     </div>
 
