@@ -570,7 +570,7 @@
 
     .gallery-item:nth-child(1) {
   grid-column: 1 / span 5;
-  grid-row: 1 / span 5;
+  grid-row: 1 / span 4;
 }
 
 .gallery-item:nth-child(2) {
@@ -590,12 +590,12 @@
 
 .gallery-item:nth-child(5) {
   grid-column: 1 / span 3;
-  grid-row: 6 / span 3;
+  grid-row: 5 / span 4;
 }
 
 .gallery-item:nth-child(6) {
   grid-column: 4 / span 6;
-  grid-row: 6 / span 3;
+  grid-row: 5 / span 4;
 }
 
 .gallery-item:nth-child(7) {
@@ -704,24 +704,25 @@
 .contact-form-field input,
 .contact-form-field textarea {
   width: 100%;
-  padding: 14px 0;
+  padding: 15px 14px;
 
-  border: 0;
-  border-bottom: 1px solid var(--line);
-  border-radius: 0;
+  border: 1px solid var(--line-soft);
+  border-radius: 10px;
 
   outline: none;
 
-  background: transparent;
+  background: rgba(241, 238, 232, 0.025);
   color: var(--text);
 
   font-family: "IBM Plex Mono", monospace;
   font-size: 13px;
   line-height: 1.6;
 
-  transition: border-color 0.25s ease;
+  transition:
+    background 0.3s ease,
+    border-color 0.3s ease,
+    transform 0.3s ease;
 }
-
 .contact-form-field textarea {
   min-height: 110px;
   resize: vertical;
@@ -734,7 +735,9 @@
 
 .contact-form-field input:focus,
 .contact-form-field textarea:focus {
-  border-bottom-color: rgba(241, 238, 232, 0.55);
+  background: rgba(241, 238, 232, 0.05);
+  border-color: rgba(241, 238, 232, 0.38);
+  transform: translateY(-1px);
 }
 
 .contact-form .button {
@@ -783,13 +786,13 @@
   }
 
   .contact-form {
-    grid-column: 2;
+  grid-column: 2;
 
-    width: 100%;
-    max-width: 420px;
-    margin-top: 0;
-  }
-
+  width: 100%;
+  max-width: 420px;
+  margin-top: 0;
+  justify-self: center;
+}
   .contact-title {
     font-size: clamp(3.8rem, 5.5vw, 6.4rem);
     line-height: 0.84;
@@ -838,14 +841,14 @@
   z-index: 2;
 
   left: 3.5%;
-  bottom: 70px;
+  bottom: 105px;
 
   max-width: 720px;
 
   font-family: "Outfit", sans-serif;
   font-style: normal;
   font-weight: 400;
-  font-size: clamp(4.5rem, 9.5vw, 10.5rem);
+  font-size: clamp(4rem, 8.5vw, 9.5rem);
   line-height: 0.76;
   letter-spacing: -0.06em;
 }
@@ -1442,9 +1445,9 @@
       }
 
       .gallery-item:nth-child(1) {
-        grid-column: span 2;
-        grid-row: span 2;
-      }
+  grid-column: 1 / span 5;
+  grid-row: 1 / span 4;
+}
 
       .gallery-item:nth-child(4),
       .gallery-item:nth-child(7) {
