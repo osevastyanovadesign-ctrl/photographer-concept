@@ -633,11 +633,11 @@
 }
 
     .contact-inner {
-      display: grid;
-      grid-template-columns: 0.75fr 2fr;
-      gap: 8vw;
-      align-items: end;
-    }
+  display: grid;
+  grid-template-columns: 80px minmax(0, 1fr);
+  gap: clamp(40px, 6vw, 90px);
+  align-items: start;
+}
 
     .contact-label {
       font-size: 10px;
