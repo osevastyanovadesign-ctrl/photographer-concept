@@ -783,12 +783,14 @@
   }
 
   .contact-form {
-    grid-column: 2;
+  grid-column: 2;
 
-    width: 100%;
-    max-width: 420px;
-    margin-top: 0;
-  }
+  width: 100%;
+  max-width: 470px;
+  margin-top: 0;
+
+  transform: translateX(-25px);
+}
 
   .contact-title {
     font-size: clamp(3.8rem, 5.5vw, 6.4rem);
@@ -874,14 +876,13 @@
     .footer-actions {
   position: absolute;
   z-index: 3;
-  top: 50%;
 
   right: max(
-    24px,
-    calc(50% - min(34vw, 450px) - 220px)
+    18px,
+    calc(50% - min(34vw, 450px) - 165px)
   );
 
-  transform: translateY(-50%);
+  bottom: 72px;
 
   display: flex;
   flex-direction: column;
@@ -893,21 +894,21 @@
   align-items: center;
   justify-content: center;
 
-  min-width: 200px;
-  min-height: 54px;
-  padding: 0 28px;
+  min-width: 215px;
+  min-height: 58px;
+  padding: 0 30px;
 
   border: 1px solid var(--line);
   border-radius: 999px;
 
   font-size: 13px;
 
-      transition:
-        background 0.3s ease,
-        color 0.3s ease,
-        border-color 0.3s ease,
-        transform 0.3s ease;
-    }
+  transition:
+    background 0.3s ease,
+    color 0.3s ease,
+    border-color 0.3s ease,
+    transform 0.3s ease;
+}
 
     .footer-action:hover {
       background: var(--text);
