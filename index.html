@@ -2618,8 +2618,8 @@
     const serviceModalClose =
       document.getElementById("serviceModalClose");
 
-    const serviceModalImage =
-      document.getElementById("serviceModalImage");
+    const serviceModalGallery =
+  document.querySelector(".service-modal-gallery");
 
     const serviceModalTag =
       document.getElementById("serviceModalTag");
@@ -2637,20 +2637,17 @@
       document.querySelectorAll(".service-trigger");
 
     function openServiceModal(trigger) {
-      const title = trigger.dataset.title || "";
-      const tag = trigger.dataset.tag || "";
-      const description = trigger.dataset.desc || "";
-      const image = trigger.dataset.img || "";
+  const title = trigger.dataset.title || "";
+  const tag = trigger.dataset.tag || "";
+  const description = trigger.dataset.desc || "";
 
-      serviceModalTitle.textContent = title;
-      serviceModalTag.textContent = tag;
-      serviceModalDescription.textContent = description;
-      serviceModalImage.src = image;
-      serviceModalImage.alt = title;
+  serviceModalTitle.textContent = title;
+  serviceModalTag.textContent = tag;
+  serviceModalDescription.textContent = description;
 
-      serviceModal.classList.add("open");
-      document.body.style.overflow = "hidden";
-    }
+  serviceModal.classList.add("open");
+  document.body.style.overflow = "hidden";
+}
 
     function closeServiceModal() {
       serviceModal.classList.remove("open");
