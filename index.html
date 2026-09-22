@@ -975,98 +975,77 @@
 
     .service-modal-inner {
   position: relative;
-
   width: min(100%, 1280px);
-  max-height: min(88vh, 780px);
-  min-height: min(78vh, 720px);
-
+  height: min(82vh, 760px);
   display: grid;
-  grid-template-columns: 1.2fr 0.8fr;
-
+  grid-template-columns: 1.55fr 0.75fr;
+  gap: 0;
   overflow: hidden;
   border-radius: var(--radius);
-
   background: var(--bg-block);
-
   transform: translateY(24px) scale(0.98);
   transition: transform 0.45s cubic-bezier(.22,.61,.36,1);
 }
 
-    .service-modal.open .service-modal-inner {
-      transform: translateY(0) scale(1);
-    }
+.service-modal.open .service-modal-inner {
+  transform: translateY(0) scale(1);
+}
 
-    .service-modal-image {
-      min-height: 500px;
-      background: var(--bg);
-    }
+.service-modal-gallery {
+  position: relative;
+  min-width: 0;
+  min-height: 0;
+  background: var(--bg);
+  overflow: hidden;
+}
 
-    .service-modal-image img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
+.service-modal-photo {
+  position: absolute;
+  display: block;
+  padding: 0;
+  margin: 0;
+  border: 0;
+  overflow: hidden;
+  background: var(--bg-block);
+  cursor: pointer;
+}
 
-    .service-modal-content {
-      padding: 55px 45px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-    }
+.service-modal-photo img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: grayscale(100%);
+  transition:
+    transform 0.8s cubic-bezier(.22,.61,.36,1),
+    filter 0.6s ease;
+}
 
-    .service-modal-tag {
-      margin-bottom: 12px;
-      font-size: 10px;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--text-muted);
-    }
+.service-modal-photo:hover img {
+  transform: scale(1.035);
+  filter: grayscale(0%);
+}
 
-    .service-modal-title {
-      font-family: "Cormorant Garamond", serif;
-      font-size: clamp(3rem, 5vw, 5rem);
-      line-height: 0.86;
-      font-weight: 400;
-    }
+.service-modal-photo-main {
+  left: 5%;
+  top: 7%;
+  width: 68%;
+  height: 86%;
+}
 
-    .service-modal-description {
-      margin-top: 25px;
-      font-size: 14px;
-      line-height: 1.65;
-      color: var(--text-soft);
-    }
+.service-modal-photo-small-1 {
+  right: 4%;
+  top: 7%;
+  width: 23%;
+  height: 25%;
+}
 
-    .service-modal-content .button {
-      align-self: flex-start;
-      margin-top: 32px;
-    }
-
-    .modal-close {
-      position: absolute;
-      z-index: 5;
-      top: 18px;
-      right: 18px;
-
-      width: 42px;
-      height: 42px;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      border-radius: 50%;
-      background: rgba(17, 17, 16, 0.7);
-      color: var(--white);
-
-      font-size: 24px;
-      line-height: 1;
-
-      transition: background 0.25s ease;
-    }
-
-    .modal-close:hover {
-      background: rgba(17, 17, 16, 0.95);
-    }
+.service-modal-photo-small-2 {
+  right: 4%;
+  top: 35%;
+  width: 23%;
+  height: 27%;
+}
 
     /* =========================
        GALLERY LIGHTBOX
@@ -2419,6 +2398,71 @@
             alt="Love Story"
           />
         </button>
+        <button
+  class="service-modal-photo service-modal-photo-small service-modal-photo-small-3"
+  type="button"
+  data-gallery-img="./images/corporate.webp"
+>
+  <img
+    src="./images/corporate.webp"
+    alt="Love Story"
+  />
+</button>
+
+<button
+  class="service-modal-photo service-modal-photo-small service-modal-photo-small-4"
+  type="button"
+  data-gallery-img="./images/banquets.webp"
+>
+  <img
+    src="./images/banquets.webp"
+    alt="Love Story"
+  />
+</button>
+
+<button
+  class="service-modal-photo service-modal-photo-small service-modal-photo-small-5"
+  type="button"
+  data-gallery-img="./images/outdoor.webp"
+>
+  <img
+    src="./images/outdoor.webp"
+    alt="Love Story"
+  />
+</button>
+
+<button
+  class="service-modal-photo service-modal-photo-small service-modal-photo-small-6"
+  type="button"
+  data-gallery-img="./images/kids.webp"
+>
+  <img
+    src="./images/kids.webp"
+    alt="Love Story"
+  />
+</button>
+
+<button
+  class="service-modal-photo service-modal-photo-small service-modal-photo-small-7"
+  type="button"
+  data-gallery-img="./images/banquet.webp"
+>
+  <img
+    src="./images/banquet.webp"
+    alt="Love Story"
+  />
+</button>
+
+<button
+  class="service-modal-photo service-modal-photo-small service-modal-photo-small-8"
+  type="button"
+  data-gallery-img="./images/details.webp"
+>
+  <img
+    src="./images/details.webp"
+    alt="Love Story"
+  />
+</button>
 
       </div>
 
