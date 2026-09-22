@@ -1067,71 +1067,6 @@
     .modal-close:hover {
       background: rgba(17, 17, 16, 0.95);
     }
-        /* =========================
-       WORKS EDITORIAL
-    ========================= */
-
-    .work-editorial {
-      display: grid;
-      grid-template-columns: minmax(280px, 0.75fr) minmax(0, 1.55fr);
-      gap: clamp(50px, 8vw, 130px);
-      align-items: center;
-    }
-
-    .work-editorial-info {
-      max-width: 390px;
-    }
-
-    .work-editorial-gallery {
-      position: relative;
-      min-height: clamp(520px, 43vw, 680px);
-    }
-
-    .work-editorial-photo {
-      position: absolute;
-      display: block;
-      padding: 0;
-      overflow: hidden;
-      background: var(--bg-block);
-      border-radius: var(--radius);
-    }
-
-    .work-editorial-photo img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition:
-        transform 0.9s cubic-bezier(.22,.61,.36,1),
-        filter 0.8s ease;
-    }
-
-    .work-editorial-photo:hover img {
-      transform: scale(1.035);
-    }
-
-    .photo-main {
-      z-index: 1;
-      left: 0;
-      top: 0;
-      width: 72%;
-      height: 78%;
-    }
-
-    .photo-small {
-      z-index: 2;
-      width: 36%;
-      height: 35%;
-    }
-
-    .photo-small-1 {
-      right: 0;
-      top: 8%;
-    }
-
-    .photo-small-2 {
-      right: 7%;
-      bottom: 0;
-    }
 
     /* =========================
        GALLERY LIGHTBOX
@@ -1797,67 +1732,50 @@
 
       <!-- 01 -->
 
-      <article class="work-block work-editorial reveal">
+      <article class="work-block reveal">
 
-  <div class="work-editorial-info">
+        <div class="work-photo-wrap">
 
-    <div class="work-number">01</div>
+          <div
+            class="work-photo service-trigger"
+            data-title="Love Story"
+            data-tag="LOVE STORY"
+            data-desc="Живые фотографии о близости, взглядах, движении и тех деталях, из которых складывается ваша история."
+            data-img="./images/weddings.webp"
+          >
+            <img
+              src="./images/weddings.webp"
+              alt="Love Story"
+              loading="lazy"
+            />
+          </div>
 
-    <div class="work-tag">LOVE STORY</div>
+        </div>
 
-    <h2 class="work-title">
-      История<br>
-      двоих
-    </h2>
+        <div class="work-info">
 
-    <p class="work-description">
-      Живые кадры о близости, взглядах,
-      движении и моментах между ними.
-    </p>
+          <div class="work-number">01</div>
 
-  </div>
+          <div class="work-tag">LOVE STORY</div>
 
-  <div class="work-editorial-gallery">
+          <h2 class="work-title">
+            История<br>
+            двоих
+          </h2>
 
-    <button
-      class="work-editorial-photo photo-main"
-      type="button"
-      data-gallery-img="./images/weddings.webp"
-    >
-      <img
-        src="./images/weddings.webp"
-        alt="Love Story"
-        loading="lazy"
-      />
-    </button>
+          <p class="work-description">
+            Живые кадры о близости, взглядах,
+            движении и моментах между ними.
+          </p>
 
-    <button
-      class="work-editorial-photo photo-small photo-small-1"
-      type="button"
-      data-gallery-img="./images/private.webp"
-    >
-      <img
-        src="./images/private.webp"
-        alt="Love Story"
-        loading="lazy"
-      />
-    </button>
+          <button class="work-link service-trigger">
+            Смотреть направление
+            <span>↗</span>
+          </button>
 
-    <button
-      class="work-editorial-photo photo-small photo-small-2"
-      type="button"
-      data-gallery-img="./images/atmosphere.webp"
-    >
-      <img
-        src="./images/atmosphere.webp"
-        alt="Love Story"
-        loading="lazy"
-      />
-    </button>
+        </div>
 
-  </div>
-
-</article>
+      </article>
 
 
       <!-- 02 -->
