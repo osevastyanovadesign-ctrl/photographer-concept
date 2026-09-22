@@ -1506,6 +1506,24 @@
         height: 100%;
         object-fit: cover;
       }
+      .footer-mobile-image {
+  position: relative;
+}
+
+.footer-mobile-image::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 35%;
+  background: linear-gradient(
+    to bottom,
+    transparent 0%,
+    var(--bg) 100%
+  );
+  pointer-events: none;
+}
 
       .footer-mobile-actions {
         display: flex;
