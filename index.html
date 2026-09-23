@@ -2888,11 +2888,13 @@
   (event) => {
 
     if (
-      event.target === serviceModal ||
-      event.target === serviceModal.querySelector(".service-modal-inner")
+      event.target.closest(".service-modal-photo") ||
+      event.target.closest(".modal-close")
     ) {
-      closeServiceModal();
+      return;
     }
+
+    closeServiceModal();
 
   }
 );
