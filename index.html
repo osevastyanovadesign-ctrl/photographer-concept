@@ -3044,12 +3044,16 @@ let currentLightboxIndex = 0;
 }
 
     function openLightbox(index) {
-      currentGalleryIndex = index;
-      updateLightbox();
+  currentGalleryIndex = index;
 
-      lightbox.classList.add("open");
-      document.body.style.overflow = "hidden";
-    }
+  currentLightboxImages = galleryImages;
+  currentLightboxIndex = index;
+
+  updateLightbox();
+
+  lightbox.classList.add("open");
+  document.body.style.overflow = "hidden";
+}
 
     function closeLightbox() {
       lightbox.classList.remove("open");
