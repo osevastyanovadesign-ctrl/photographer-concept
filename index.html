@@ -2919,12 +2919,12 @@
 let currentLightboxIndex = 0;
 
     function updateLightbox() {
-      lightboxImage.src =
-        galleryImages[currentGalleryIndex];
+  lightboxImage.src =
+    currentLightboxImages[currentLightboxIndex];
 
-      lightboxImage.alt =
-        `Фотография ${currentGalleryIndex + 1}`;
-    }
+  lightboxImage.alt =
+    `Фотография ${currentLightboxIndex + 1}`;
+}
 
     function openLightbox(index) {
       currentGalleryIndex = index;
