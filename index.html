@@ -1625,6 +1625,46 @@
   max-height: none;
   overflow: hidden;
 }
+      .service-modal-gallery {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-auto-rows: auto;
+
+  gap: 10px;
+  padding: 12px 12px 40px;
+
+  background: var(--bg);
+
+  scrollbar-width: none;
+}
+
+.service-modal-gallery::-webkit-scrollbar {
+  display: none;
+}
+
+.service-modal-photo {
+  width: 100%;
+  height: 72vw;
+  min-height: 220px;
+  max-height: 520px;
+
+  border-radius: 14px;
+}
+
+.service-modal-photo:nth-child(1),
+.service-modal-photo:nth-child(2),
+.service-modal-photo:nth-child(3),
+.service-modal-photo:nth-child(4),
+.service-modal-photo:nth-child(5),
+.service-modal-photo:nth-child(6) {
+  grid-column: auto;
+  grid-row: auto;
+}
 
       .service-modal-image {
         min-height: 300px;
