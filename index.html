@@ -1618,12 +1618,6 @@
         padding: 0px;
       }
 
-      .service-modal-inner {
-  width: 100%;
-  height: 100dvh;
-  max-height: none;
-  overflow: hidden;
-}
       .service-modal-gallery {
   width: 100%;
   height: 100%;
@@ -1631,7 +1625,7 @@
   overflow-x: hidden;
 
   display: grid;
-  grid-template-columns: 1fr;
+  grid-template-columns: minmax(0, 3fr) minmax(0, 2fr);
   grid-auto-rows: auto;
 
   gap: 10px;
@@ -1656,35 +1650,28 @@
 }
 
 .service-modal-photo:nth-child(1) {
-  grid-column: 1 / 2;
-  grid-row: 1 / span 2;
+  grid-column: 1;
 }
 
 .service-modal-photo:nth-child(2) {
-  grid-column: 2 / 3;
-  grid-row: 1 / span 2;
+  grid-column: 2;
 }
 
 .service-modal-photo:nth-child(3) {
   grid-column: 1 / -1;
-  grid-row: 3 / span 2;
 }
 
 .service-modal-photo:nth-child(4) {
-  grid-column: 1 / 2;
-  grid-row: 5 / span 2;
+  grid-column: 2;
 }
 
 .service-modal-photo:nth-child(5) {
-  grid-column: 2 / 3;
-  grid-row: 5 / span 2;
+  grid-column: 1;
 }
 
 .service-modal-photo:nth-child(6) {
   grid-column: 1 / -1;
-  grid-row: 7 / span 2;
 }
-
       .service-modal-image {
         min-height: 300px;
         height: 42vh;
