@@ -2884,15 +2884,18 @@
 
 
     serviceModal.addEventListener(
-      "click",
-      (event) => {
+  "click",
+  (event) => {
 
-        if (event.target === serviceModal) {
-          closeServiceModal();
-        }
+    if (
+      event.target === serviceModal ||
+      event.target === serviceModal.querySelector(".service-modal-inner")
+    ) {
+      closeServiceModal();
+    }
 
-      }
-    );
+  }
+);
 
 
     /* =========================
