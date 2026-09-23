@@ -2940,20 +2940,20 @@ let currentLightboxIndex = 0;
     }
 
     function showPrevious() {
-      currentGalleryIndex =
-        (currentGalleryIndex - 1 + galleryImages.length) %
-        galleryImages.length;
+  currentLightboxIndex =
+    (currentLightboxIndex - 1 + currentLightboxImages.length) %
+    currentLightboxImages.length;
 
-      updateLightbox();
-    }
+  updateLightbox();
+}
 
-    function showNext() {
-      currentGalleryIndex =
-        (currentGalleryIndex + 1) %
-        galleryImages.length;
+function showNext() {
+  currentLightboxIndex =
+    (currentLightboxIndex + 1) %
+    currentLightboxImages.length;
 
-      updateLightbox();
-    }
+  updateLightbox();
+}
 
     galleryItems.forEach((item, index) => {
       item.addEventListener("click", () => {
@@ -2967,14 +2967,20 @@ document.addEventListener("click", (event) => {
     return;
   }
 
-  const image = photo.querySelector("img");
+  const photos =
+    Array.from(
+      document.querySelectorAll(".service-modal-photo img")
+    );
 
-  if (!image) {
-    return;
-  }
+  const index =
+    photos.indexOf(photo.querySelector("img"));
 
-  lightboxImage.src = image.src;
-  lightboxImage.alt = image.alt || "Фотография";
+  currentLightboxImages =
+    photos.map((img) => img.src);
+
+  currentLightboxIndex = index;
+
+  updateLightbox();
 
   lightbox.classList.add("open");
   document.body.style.overflow = "hidden";
