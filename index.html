@@ -991,15 +991,15 @@
 .service-modal-gallery {
   width: 100%;
   height: 100%;
+
   overflow-y: auto;
   overflow-x: hidden;
 
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  grid-auto-rows: minmax(260px, 42vh);
-  gap: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 
-  padding: 30px 5vw 60px;
+  padding: 24px;
 
   background: var(--bg);
 
@@ -1013,8 +1013,10 @@
 .service-modal-photo {
   position: relative;
 
+  flex: 0 0 auto;
+
   width: 100%;
-  height: 100%;
+  height: 78vh;
 
   padding: 0;
   margin: 0;
@@ -1027,14 +1029,6 @@
   background: var(--bg-block);
 
   cursor: pointer;
-}
-
-.service-modal-photo:nth-child(5) {
-  grid-column: 1 / 3;
-}
-
-.service-modal-photo:nth-child(6) {
-  grid-column: 1 / 3;
 }
 
 .service-modal-photo img {
@@ -1053,7 +1047,7 @@
 }
 
 .service-modal-photo:hover img {
-  transform: scale(1.025);
+  transform: scale(1.02);
   filter: grayscale(0%);
 }
     /* =========================
