@@ -2959,7 +2959,25 @@
         openLightbox(index);
       });
     });
+document.addEventListener("click", (event) => {
+  const photo = event.target.closest(".service-modal-photo");
 
+  if (!photo) {
+    return;
+  }
+
+  const image = photo.querySelector("img");
+
+  if (!image) {
+    return;
+  }
+
+  lightboxImage.src = image.src;
+  lightboxImage.alt = image.alt || "Фотография";
+
+  lightbox.classList.add("open");
+  document.body.style.overflow = "hidden";
+});
     lightboxClose.addEventListener(
       "click",
       closeLightbox
