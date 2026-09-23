@@ -2698,80 +2698,199 @@
     });
 
 
-    /* =========================
-       SERVICE MODAL
+       /* =========================
+       SERVICE MODAL / PHOTO COLLECTION
     ========================== */
 
-    const serviceModal = document.getElementById("serviceModal");
+    const serviceModal =
+      document.getElementById("serviceModal");
+
     const serviceModalClose =
       document.getElementById("serviceModalClose");
 
     const serviceModalGallery =
-  document.querySelector(".service-modal-gallery");
-
-    const serviceModalTag =
-      document.getElementById("serviceModalTag");
-
-    const serviceModalTitle =
-      document.getElementById("serviceModalTitle");
-
-    const serviceModalDescription =
-      document.getElementById("serviceModalDescription");
-
-    const serviceModalContact =
-      document.getElementById("serviceModalContact");
+      document.querySelector(".service-modal-gallery");
 
     const serviceTriggers =
       document.querySelectorAll(".service-trigger");
 
+
+    /* =========================
+       PHOTO COLLECTIONS
+    ========================== */
+
+    const serviceCollections = {
+
+      "Love Story": [
+        "./images/love-story-01.webp",
+        "./images/love-story-02.webp",
+        "./images/love-story-03.webp",
+        "./images/love-story-04.webp",
+        "./images/love-story-05.webp",
+        "./images/love-story-06.webp"
+      ],
+
+      "Свадьбы": [
+        "./images/wedding-01.webp",
+        "./images/wedding-02.webp",
+        "./images/wedding-03.webp",
+        "./images/wedding-04.webp",
+        "./images/wedding-05.webp",
+        "./images/wedding-06.webp"
+      ],
+
+      "Портреты": [
+        "./images/portrait-01.webp",
+        "./images/portrait-02.webp",
+        "./images/portrait-03.webp",
+        "./images/portrait-04.webp",
+        "./images/portrait-05.webp",
+        "./images/portrait-06.webp"
+      ],
+
+      "Семейная съёмка": [
+        "./images/family-01.webp",
+        "./images/family-02.webp",
+        "./images/family-03.webp",
+        "./images/family-04.webp",
+        "./images/family-05.webp",
+        "./images/family-06.webp"
+      ],
+
+      "Lifestyle": [
+        "./images/lifestyle-01.webp",
+        "./images/lifestyle-02.webp",
+        "./images/lifestyle-03.webp",
+        "./images/lifestyle-04.webp",
+        "./images/lifestyle-05.webp",
+        "./images/lifestyle-06.webp"
+      ],
+
+      "История дня": [
+        "./images/day-01.webp",
+        "./images/day-02.webp",
+        "./images/day-03.webp",
+        "./images/day-04.webp",
+        "./images/day-05.webp",
+        "./images/day-06.webp"
+      ]
+
+    };
+
+
+    /* =========================
+       OPEN COLLECTION
+    ========================== */
+
     function openServiceModal(trigger) {
-  const title = trigger.dataset.title || "";
-  const tag = trigger.dataset.tag || "";
-  const description = trigger.dataset.desc || "";
 
-  serviceModalTitle.textContent = title;
-  serviceModalTag.textContent = tag;
-  serviceModalDescription.textContent = description;
+      const title =
+        trigger.dataset.title ||
+        trigger.closest(".work-block")
+          ?.querySelector(".work-photo")
+          ?.dataset.title ||
+        "";
 
-  serviceModal.classList.add("open");
-  document.body.style.overflow = "hidden";
-}
+      const collection =
+        serviceCollections[title] || [];
+
+
+      /* Очищаем старый collage */
+
+      serviceModalGallery.innerHTML = "";
+
+
+      /* Создаём фотографии выбранного направления */
+
+      collection.forEach((src, index) => {
+
+        const photo = document.createElement("button");
+
+        photo.type = "button";
+        photo.className = "service-modal-photo";
+        photo.dataset.galleryImg = src;
+
+        const image = document.createElement("img");
+
+        image.src = src;
+        image.alt = `${title} — фотография ${index + 1}`;
+        image.loading = "lazy";
+
+        photo.appendChild(image);
+
+        serviceModalGallery.appendChild(photo);
+
+      });
+
+
+      serviceModal.classList.add("open");
+
+      document.body.style.overflow = "hidden";
+    }
+
+
+    /* =========================
+       CLOSE COLLECTION
+    ========================== */
 
     function closeServiceModal() {
+
       serviceModal.classList.remove("open");
+
       document.body.style.overflow = "";
     }
 
+
+    /* =========================
+       WORK TRIGGERS
+    ========================== */
+
     serviceTriggers.forEach((trigger) => {
+
       trigger.addEventListener("click", () => {
+
         const parentPhoto =
-          trigger.closest(".work-block")?.querySelector(".work-photo");
+          trigger.closest(".work-block")
+            ?.querySelector(".work-photo");
 
         if (trigger.classList.contains("work-photo")) {
+
           openServiceModal(trigger);
+
           return;
         }
 
         if (parentPhoto) {
+
           openServiceModal(parentPhoto);
+
         }
+
       });
+
     });
+
+
+    /* =========================
+       CLOSE EVENTS
+    ========================== */
 
     serviceModalClose.addEventListener(
       "click",
       closeServiceModal
     );
 
-    serviceModal.addEventListener("click", (event) => {
-      if (event.target === serviceModal) {
-        closeServiceModal();
-      }
-    });
 
-    serviceModalContact.addEventListener("click", () => {
-      closeServiceModal();
-    });
+    serviceModal.addEventListener(
+      "click",
+      (event) => {
+
+        if (event.target === serviceModal) {
+          closeServiceModal();
+        }
+
+      }
+    );
 
 
     /* =========================
